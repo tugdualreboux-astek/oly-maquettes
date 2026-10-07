@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Système de design — Maquette OLY</title>
+<link rel="icon" href="img/favicon.png">
+
+<style>@font-face{font-family:'Atkinson Hyperlegible';font-weight:400;font-display:swap;src:url('fonts/atkinson-400.woff2') format('woff2')}@font-face{font-family:'Atkinson Hyperlegible';font-weight:700;font-display:swap;src:url('fonts/atkinson-700.woff2') format('woff2')}[hidden]{display:none !important}
+body{margin:0;background:#FAF8F7}
+*{box-sizing:border-box}
+a{color:#0A5CB0;text-underline-offset:3px;text-decoration-thickness:2px}
+a:hover{color:#08498C}
+:focus-visible{outline:3px solid #0A5CB0;outline-offset:2px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 28px;border-radius:999px;font-family:inherit;font-weight:700;font-size:18px;line-height:1;text-decoration:none;border:2px solid transparent;cursor:pointer;white-space:nowrap}
+.btn-primary{background:#D93A39;color:#FFFFFF}
+.btn-primary:hover{background:#B92F2E;color:#FFFFFF}
+.btn-secondary{background:#FFFFFF;color:#0A5CB0;border-color:#0A5CB0}
+.btn-secondary:hover{background:#E3F0FC;color:#08498C}
+.btn-soft{background:#CFE5FA;color:#1E2B3A}
+.btn-soft:hover{background:#A9D1F5;color:#1E2B3A}
+.ds-grid-5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:24px}
+.ds-grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.ds-grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+.ds-grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
+.ds-states{display:grid;grid-template-columns:160px repeat(5,minmax(0,1fr));gap:16px;align-items:center}
+.ds-type{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;align-items:baseline;padding:20px 0;border-bottom:1px solid #D9DEE5}
+.ds-type:last-child{border-bottom:0}
+@media (max-width:900px){.ds-grid-5,.ds-grid-4{grid-template-columns:repeat(2,minmax(0,1fr))}.ds-grid-3,.ds-grid-2{grid-template-columns:1fr}.ds-states{grid-template-columns:1fr 1fr}.ds-type{grid-template-columns:1fr;gap:4px}}
+</style>
+
+</head>
+<body>
+
+<div style="background: #FAF8F7; color: #1E2B3A; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; font-size: 18px; line-height: 1.6; padding: 80px 0 120px">
+<main style="max-width: 1280px; margin: 0 auto; padding: 0 48px; display: flex; flex-direction: column; gap: 96px">
+
+<header style="display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap; border-bottom: 2px solid #D9DEE5; padding-bottom: 48px">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<p style="margin: 0; font-size: 18px; font-weight: 700; color: #015C73">Association Ouvrir Les Yeux · Refonte du site</p>
+<h1 style="margin: 0; font-size: 56px; line-height: 1.1; font-weight: 700">Système de design</h1>
+<p style="margin: 0; font-size: 20px">Version 1.0 · octobre 2026 · conforme RGAA / WCAG 2.1 AA</p>
+</div>
+<div aria-hidden="true" style="display: flex; align-items: center; gap: 20px">
+<div style="width: 88px; height: 88px; border-radius: 50%; border: 10px solid #A9D1F5"></div>
+<div style="width: 32px; height: 32px; border-radius: 50%; background: #FFE6E5"></div>
+<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#015C73" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9 4.9 19.1"/></svg>
+</div>
+</header>
+
+<section aria-labelledby="t-logo" style="display: flex; flex-direction: column; gap: 32px">
+<div>
+<h2 id="t-logo" style="margin: 0; font-size: 36px; line-height: 1.2; color: #006FD6">Logo</h2>
+<p style="margin: 8px 0 0; max-width: 70ch">Logo principal issu de la charte graphique 2026. Taille minimale : 120 px de large sur ordinateur, 80 px sur mobile. Toujours sur fond clair, avec une zone de protection autour.</p>
+</div>
+<div class="ds-grid-2">
+<div style="background: #FFFFFF; border: 2px solid #D9DEE5; border-radius: 16px; padding: 40px; display: flex; align-items: center; justify-content: center">
+<img src="img/logo-oly.png" alt="Logo Ouvrir Les Yeux sur fond blanc" style="display: block; height: 96px; width: auto">
+</div>
+<div style="background: #E3F0FC; border-radius: 16px; padding: 40px; display: flex; align-items: center; justify-content: center">
+<img src="img/logo-oly.png" alt="Logo Ouvrir Les Yeux sur fond bleu pastel" style="display: block; height: 96px; width: auto">
+</div>
+</div>
+<div class="ds-grid-2" style="font-size: 16px; margin-top: -16px">
+<span><strong>En-tête</strong> · 64 px de haut sur ordinateur, 48 px sur mobile. Lien vers l'accueil.</span>
+<span><strong>Pied de page</strong> · 64 px de haut, sur le bleu pastel.</span>
+</div>
+</section>
+
+<section aria-labelledby="t-couleurs" style="display: flex; flex-direction: column; gap: 40px">
+<div>
+<h2 id="t-couleurs" style="margin: 0; font-size: 36px; line-height: 1.2; color: #006FD6">Palette de couleurs</h2>
+<p style="margin: 8px 0 0; max-width: 70ch">Des couleurs douces et pastel, sans bleu nuit. Le texte est toujours en encre, y compris sur les fonds colorés. Chaque ratio de contraste est calculé selon WCAG 2.1.</p>
+</div>
+
+<h3 style="margin: 0; font-size: 26px; line-height: 1.3">Couleurs principales</h3>
+<div class="ds-grid-5">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="height: 140px; border-radius: 16px; background: #1E2B3A"></div>
+<div><strong>--ink · Encre</strong><br>#1E2B3A<br><span style="font-size: 16px">Tout le texte. 13,6:1 sur fond</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="height: 140px; border-radius: 16px; background: #006FD6"></div>
+<div><strong>--oly-blue · Bleu OLY</strong><br>#006FD6<br><span style="font-size: 16px">Titres ≥ 24 px uniquement. 4,7:1 sur fond</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="height: 140px; border-radius: 16px; background: #0A5CB0"></div>
+<div><strong>--link-blue · Bleu lien</strong><br>#0A5CB0<br><span style="font-size: 16px">Liens, bouton secondaire, focus. 6,3:1</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="height: 140px; border-radius: 16px; background: #D93A39"></div>
+<div><strong>--coral-btn · Corail bouton</strong><br>#D93A39<br><span style="font-size: 16px">Bouton principal, texte blanc. 4,55:1</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="height: 140px; border-radius: 16px; background: #015C73"></div>
+<div><strong>--teal · Canard</strong><br>#015C73<br><span style="font-size: 16px">Accent texte ponctuel. 7,1:1 sur fond</span></div>
+</div>
+</div>
+
+<h3 style="margin: 0; font-size: 26px; line-height: 1.3">Fonds pastel</h3>
+<div class="ds-grid-4">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="height: 110px; border-radius: 16px; background: #E3F0FC; display: flex; align-items: center; justify-content: center; font-weight: 700">Aa 12,4:1</div>
+<div><strong>--bg-blue</strong> · #E3F0FC<br><span style="font-size: 16px">Fonds de section, pied de page</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="height: 110px; border-radius: 16px; background: #CFE5FA; display: flex; align-items: center; justify-content: center; font-weight: 700">Aa 11,1:1</div>
+<div><strong>--bg-blue-mid</strong> · #CFE5FA<br><span style="font-size: 16px">Entrée de menu active, survol</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="height: 110px; border-radius: 16px; background: #A9D1F5; display: flex; align-items: center; justify-content: center; font-weight: 700">Aa 9,0:1</div>
+<div><strong>--bg-sky</strong> · #A9D1F5<br><span style="font-size: 16px">Décor, motifs</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="height: 110px; border-radius: 16px; background: #FFE6E5; display: flex; align-items: center; justify-content: center; font-weight: 700">Aa 12,1:1</div>
+<div><strong>--bg-coral</strong> · #FFE6E5<br><span style="font-size: 16px">Bandeau « Agir avec nous », don</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="height: 110px; border-radius: 16px; background: #E2F3EE; display: flex; align-items: center; justify-content: center; font-weight: 700">Aa 12,5:1</div>
+<div><strong>--bg-mint</strong> · #E2F3EE<br><span style="font-size: 16px">Agenda, encadrés « À retenir »</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="height: 110px; border-radius: 16px; background: #FFEBDD; display: flex; align-items: center; justify-content: center; font-weight: 700">Aa 12,4:1</div>
+<div><strong>--bg-peach</strong> · #FFEBDD<br><span style="font-size: 16px">Newsletter, « Bon à savoir »</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="height: 110px; border-radius: 16px; background: #FAF8F7; border: 2px solid #D9DEE5; display: flex; align-items: center; justify-content: center; font-weight: 700">Aa 13,6:1</div>
+<div><strong>--page</strong> · #FAF8F7<br><span style="font-size: 16px">Fond de page</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="height: 110px; border-radius: 16px; background: #FFFFFF; border: 2px solid #D9DEE5; display: flex; align-items: center; justify-content: center; font-weight: 700">Aa 14,4:1</div>
+<div><strong>--card</strong> · #FFFFFF<br><span style="font-size: 16px">Cartes, en-tête, panneaux</span></div>
+</div>
+</div>
+
+<div style="display: flex; gap: 16px; align-items: flex-start; background: #FFFFFF; border: 2px solid #D9DEE5; border-radius: 16px; padding: 24px 28px">
+<svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1E2B3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+<p style="margin: 0"><strong>Interdit :</strong> texte blanc sur un fond pastel ; bleu #006FD6 pour un texte de moins de 24 px sur fond pastel (4,27:1) ; corail d'origine #FF4948 sous un texte blanc (3,3:1), il reste réservé au décor.</p>
+</div>
+</section>
+
+<section aria-labelledby="t-typo" style="display: flex; flex-direction: column; gap: 32px">
+<div>
+<h2 id="t-typo" style="margin: 0; font-size: 36px; line-height: 1.2; color: #006FD6">Typographie</h2>
+<p style="margin: 8px 0 0; max-width: 70ch">Titres en Luciole et texte en Atkinson Hyperlegible, deux polices conçues pour la basse vision. Corps 18 px minimum, interligne 1,6, lignes d'environ 70 caractères.</p>
+</div>
+<div style="background: #FFFFFF; border-radius: 16px; padding: 40px; display: flex; flex-direction: column; gap: 0">
+<div class="ds-type"><span style="font-size: 16px; color: #015C73; font-weight: 700">H1 · 48 / 56 · gras</span><span style="font-size: 48px; line-height: 56px; font-weight: 700">Ensemble, rendons le monde accessible</span></div>
+<div class="ds-type"><span style="font-size: 16px; color: #015C73; font-weight: 700">H2 · 36 / 44 · gras</span><span style="font-size: 36px; line-height: 44px; font-weight: 700; color: #006FD6">Nos engagements</span></div>
+<div class="ds-type"><span style="font-size: 16px; color: #015C73; font-weight: 700">H3 · 26 / 34 · gras</span><span style="font-size: 26px; line-height: 34px; font-weight: 700">Le diagnostic et parcours de soin</span></div>
+<div class="ds-type"><span style="font-size: 16px; color: #015C73; font-weight: 700">H4 · 22 / 30 · gras</span><span style="font-size: 22px; line-height: 30px; font-weight: 700">Je fais un don par chèque</span></div>
+<div class="ds-type"><span style="font-size: 16px; color: #015C73; font-weight: 700">Article · 20 / 1,7</span><span style="font-size: 20px; line-height: 1.7; max-width: 70ch">Texte de lecture longue : actualités, articles et pages de rubrique.</span></div>
+<div class="ds-type"><span style="font-size: 16px; color: #015C73; font-weight: 700">Corps · 18 / 1,6</span><span style="font-size: 18px; max-width: 70ch">Ouvrir Les Yeux informe, accompagne et agit pour les personnes touchées par une neuropathie optique héréditaire et leurs proches.</span></div>
+<div class="ds-type"><span style="font-size: 16px; color: #015C73; font-weight: 700">Métadonnée · 16</span><span style="font-size: 16px">Minimum absolu, réservé aux dates, légendes et mentions. Jamais pour un paragraphe.</span></div>
+</div>
+</section>
+
+<section aria-labelledby="t-boutons" style="display: flex; flex-direction: column; gap: 32px">
+<div>
+<h2 id="t-boutons" style="margin: 0; font-size: 36px; line-height: 1.2; color: #006FD6">Boutons</h2>
+<p style="margin: 8px 0 0; max-width: 70ch">Forme pilule, 52 px de haut, même gabarit pour les trois variantes. Aucune flèche ni chevron, aucun soulignement : le soulignement est réservé aux liens.</p>
+</div>
+<div style="background: #FFFFFF; border-radius: 16px; padding: 40px; display: flex; flex-direction: column; gap: 24px; overflow-x: auto">
+<div class="ds-states" style="font-size: 16px; font-weight: 700; color: #015C73">
+<span></span><span>Normal</span><span>Survol</span><span>Focus clavier</span><span>Actif</span><span>Désactivé</span>
+</div>
+<div class="ds-states">
+<strong>Principal</strong>
+<a href="#" class="btn btn-primary">Faire un don</a>
+<a href="#" class="btn btn-primary" style="background: #B92F2E">Faire un don</a>
+<a href="#" class="btn btn-primary" style="outline: 3px solid #0A5CB0; outline-offset: 2px">Faire un don</a>
+<a href="#" class="btn btn-primary" style="background: #A12827; box-shadow: inset 0 3px 0 rgba(0,0,0,0.2)">Faire un don</a>
+<button type="button" disabled class="btn" style="background: #E6E9ED; color: #5B6470; cursor: not-allowed">Faire un don</button>
+</div>
+<div class="ds-states">
+<strong>Secondaire</strong>
+<a href="#" class="btn btn-secondary">En savoir plus</a>
+<a href="#" class="btn btn-secondary" style="background: #E3F0FC; color: #08498C; border-color: #08498C">En savoir plus</a>
+<a href="#" class="btn btn-secondary" style="outline: 3px solid #0A5CB0; outline-offset: 2px">En savoir plus</a>
+<a href="#" class="btn btn-secondary" style="background: #CFE5FA; color: #08498C; border-color: #08498C">En savoir plus</a>
+<button type="button" disabled class="btn" style="background: #FFFFFF; color: #5B6470; border-color: #B8C0CA; cursor: not-allowed">En savoir plus</button>
+</div>
+<div class="ds-states">
+<strong>Doux</strong>
+<a href="#" class="btn btn-soft">Voir l'agenda</a>
+<a href="#" class="btn btn-soft" style="background: #A9D1F5">Voir l'agenda</a>
+<a href="#" class="btn btn-soft" style="outline: 3px solid #0A5CB0; outline-offset: 2px">Voir l'agenda</a>
+<a href="#" class="btn btn-soft" style="background: #A9D1F5; box-shadow: inset 0 3px 0 rgba(0,0,0,0.12)">Voir l'agenda</a>
+<button type="button" disabled class="btn" style="background: #E6E9ED; color: #5B6470; cursor: not-allowed">Voir l'agenda</button>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="t-nav" style="display: flex; flex-direction: column; gap: 32px">
+<div>
+<h2 id="t-nav" style="margin: 0; font-size: 36px; line-height: 1.2; color: #006FD6">Liens et navigation</h2>
+</div>
+<div class="ds-grid-2">
+<div style="background: #FFFFFF; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 20px">
+<h3 style="margin: 0; font-size: 22px">Lien texte</h3>
+<p style="margin: 0">Consultez <a href="#">les démarches pour obtenir une aide humaine</a> sur notre page dédiée.</p>
+<p style="margin: 0; font-size: 16px">Bleu #0A5CB0, souligné 2 px, sans flèche. Survol : #08498C.</p>
+</div>
+<div style="background: #FFFFFF; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 20px">
+<h3 style="margin: 0; font-size: 22px">Fil d'Ariane</h3>
+<nav aria-label="Fil d'Ariane">
+<ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; align-items: center">
+<li><a href="#">Accueil</a></li>
+<li aria-hidden="true">›</li>
+<li><a href="#">Les NOH</a></li>
+<li aria-hidden="true">›</li>
+<li><strong aria-current="page">Les traitements</strong></li>
+</ol>
+</nav>
+<p style="margin: 0; font-size: 16px">Présent sur toutes les pages sauf l'accueil. Dernier élément en gras, non cliquable.</p>
+</div>
+<div style="background: #FFFFFF; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 20px">
+<h3 style="margin: 0; font-size: 22px">Sélecteur de langue</h3>
+<div style="display: flex; gap: 16px; align-items: center">
+<a href="#" lang="fr" aria-current="true" style="font-weight: 700; color: #1E2B3A">Français</a>
+<span aria-hidden="true">·</span>
+<a href="#" lang="en" hreflang="en">English</a>
+<span aria-hidden="true">·</span>
+<a href="#" lang="es" hreflang="es">Español</a>
+</div>
+<p style="margin: 0; font-size: 16px">Trois langues : français, anglais, espagnol. Noms en toutes lettres, dans leur propre langue. Pas d'abréviation, pas de drapeau.</p>
+</div>
+<div style="background: #FFFFFF; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 20px">
+<h3 style="margin: 0; font-size: 22px">Badges</h3>
+<div style="display: flex; gap: 12px; flex-wrap: wrap">
+<span style="display: inline-block; padding: 4px 14px; border-radius: 999px; background: #CFE5FA; font-size: 16px; font-weight: 700">Interne</span>
+<span style="display: inline-block; padding: 4px 14px; border-radius: 999px; background: #FFEBDD; font-size: 16px; font-weight: 700">Externe</span>
+<span style="display: inline-block; padding: 4px 14px; border-radius: 999px; background: #E2F3EE; font-size: 16px; font-weight: 700">Événement</span>
+</div>
+<p style="margin: 0; font-size: 16px">Pilule, fond pastel, texte encre. Le libellé porte l'information, pas la couleur.</p>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="t-form" style="display: flex; flex-direction: column; gap: 32px">
+<div>
+<h2 id="t-form" style="margin: 0; font-size: 36px; line-height: 1.2; color: #006FD6">Champs de formulaire</h2>
+<p style="margin: 8px 0 0; max-width: 70ch">Libellé toujours visible au-dessus du champ. Bordure de 2 px à 4,5:1. Erreur signalée par une icône et un texte, jamais par la couleur seule.</p>
+</div>
+<div class="ds-grid-3" style="background: #FFFFFF; border-radius: 16px; padding: 40px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="ds-f1" style="font-weight: 700">Votre adresse e-mail</label>
+<input id="ds-f1" type="email" placeholder="nom@exemple.fr" style="height: 56px; border: 2px solid #767676; border-radius: 12px; padding: 0 16px; font: inherit; color: #1E2B3A; background: #FFFFFF">
+<span style="font-size: 16px">Normal</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="ds-f2" style="font-weight: 700">Votre adresse e-mail</label>
+<input id="ds-f2" type="email" value="claire.martin@" style="height: 56px; border: 2px solid #0A5CB0; border-radius: 12px; padding: 0 16px; font: inherit; color: #1E2B3A; background: #FFFFFF; outline: 3px solid #0A5CB0; outline-offset: 2px">
+<span style="font-size: 16px">Focus clavier</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="ds-f3" style="font-weight: 700">Votre adresse e-mail</label>
+<input id="ds-f3" type="email" value="claire.martin" aria-invalid="true" aria-describedby="ds-f3-err" style="height: 56px; border: 2px solid #B92F2E; border-radius: 12px; padding: 0 16px; font: inherit; color: #1E2B3A; background: #FFFFFF">
+<span id="ds-f3-err" style="display: flex; gap: 8px; align-items: center; color: #B92F2E; font-weight: 700">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+Saisissez une adresse complète, par exemple nom@exemple.fr
+</span>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="t-cards" style="display: flex; flex-direction: column; gap: 32px">
+<div>
+<h2 id="t-cards" style="margin: 0; font-size: 36px; line-height: 1.2; color: #006FD6">Cartes</h2>
+<p style="margin: 8px 0 0; max-width: 70ch">Coins arrondis 16 px, ombre légère. La carte entière est cliquable. Aucun texte posé sur une image.</p>
+</div>
+<div class="ds-grid-3">
+<a href="#" style="display: flex; flex-direction: column; background: #FFFFFF; border-radius: 16px; overflow: hidden; text-decoration: none; color: #1E2B3A; box-shadow: 0 2px 10px rgba(30,43,58,0.08)">
+<div style="aspect-ratio: 16 / 10; background: #CFE5FA; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 16px; text-align: center; font-size: 16px">
+<svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1E2B3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg>
+Photo de l'article
+</div>
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap"><span style="padding: 4px 14px; border-radius: 999px; background: #CFE5FA; font-size: 16px; font-weight: 700">Interne</span><span style="font-size: 16px">[date]</span></div>
+<h3 style="margin: 0; font-size: 22px; line-height: 1.35">Prix Espoir d'OLY : appel à candidatures</h3>
+<p style="margin: 0">Un prix pour les jeunes chercheurs qui travaillent sur les NOH.</p>
+<span style="color: #0A5CB0; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 2px">Lire l'article</span>
+</div>
+</a>
+<a href="#" style="display: flex; gap: 20px; background: #FFFFFF; border-radius: 16px; padding: 24px; text-decoration: none; color: #1E2B3A; box-shadow: 0 2px 10px rgba(30,43,58,0.08); align-self: start">
+<div style="flex-shrink: 0; width: 84px; height: 92px; border-radius: 14px; background: #E2F3EE; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.1">
+<span style="font-size: 32px; font-weight: 700">JJ</span><span style="font-size: 16px; font-weight: 700">mois</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h3 style="margin: 0; font-size: 22px; line-height: 1.35">Repas dans le noir</h3>
+<span style="display: flex; gap: 8px; align-items: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>[Lieu]</span>
+<span style="display: flex; gap: 8px; align-items: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>[Horaire]</span>
+</div>
+</a>
+<div style="position: relative; background: #FFEBDD; border-radius: 20px; padding: 32px; display: flex; flex-direction: column; gap: 14px; overflow: hidden; align-self: start">
+<span aria-hidden="true" style="position: absolute; top: 20px; right: 24px; width: 18px; height: 18px; border-radius: 50%; background: #FFB3B2"></span>
+<span aria-hidden="true" style="position: absolute; top: 56px; right: 64px; width: 10px; height: 10px; border-radius: 50%; background: #A9D1F5"></span>
+<div aria-hidden="true" style="width: 88px; height: 88px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center">
+<svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#1E2B3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+</div>
+<h3 style="margin: 0; font-size: 26px; line-height: 1.3">Informer</h3>
+<p style="margin: 0">Des informations claires et accessibles sur les NOH et la déficience visuelle.</p>
+</div>
+</div>
+<div class="ds-grid-3" style="font-size: 16px; margin-top: -16px">
+<span><strong>Actualité</strong> · image sans texte, badge, date, titre, extrait</span>
+<span><strong>Agenda</strong> · pastille de date, lieu et horaire avec icône + texte</span>
+<span><strong>Engagement</strong> · icône au trait dans un cercle blanc, décor pastel</span>
+</div>
+</section>
+
+<section aria-labelledby="t-icones" style="display: flex; flex-direction: column; gap: 32px">
+<div>
+<h2 id="t-icones" style="margin: 0; font-size: 36px; line-height: 1.2; color: #006FD6">Icônes et décor</h2>
+<p style="margin: 8px 0 0; max-width: 70ch">Icônes au trait, toujours accompagnées d'un texte. Pas d'émoji. Les motifs décoratifs sont pastel, discrets, et jamais posés derrière du texte.</p>
+</div>
+<div style="background: #FFFFFF; border-radius: 16px; padding: 40px; display: flex; flex-wrap: wrap; gap: 40px; align-items: center">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 8px"><svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1E2B3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><span style="font-size: 16px">Rechercher</span></div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 8px"><svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1E2B3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span style="font-size: 16px">Menu</span></div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 8px"><svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1E2B3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg><span style="font-size: 16px">Ouvrir</span></div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 8px"><svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1E2B3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg><span style="font-size: 16px">Informer</span></div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 8px"><svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1E2B3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></svg><span style="font-size: 16px">Accompagner</span></div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 8px"><svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1E2B3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg><span style="font-size: 16px">Inclure</span></div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 8px"><svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1E2B3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.5a2 2 0 0 1-.2.9L4.7 20.5a1 1 0 0 0 .9 1.5h12.8a1 1 0 0 0 .9-1.5l-5.1-10.1a2 2 0 0 1-.2-.9V2"/><path d="M8.5 2h7M7 16h10"/></svg><span style="font-size: 16px">Recherche</span></div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 8px"><svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1E2B3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-9 5.7a2 2 0 0 1-2 0L2 7"/></svg><span style="font-size: 16px">Newsletter</span></div>
+<div aria-hidden="true" style="display: flex; gap: 24px; align-items: center; margin-left: auto">
+<div style="width: 64px; height: 64px; border-radius: 50%; border: 8px solid #A9D1F5"></div>
+<div style="width: 40px; height: 40px; border-radius: 50%; background: #FFE6E5"></div>
+<div style="width: 24px; height: 24px; border-radius: 50%; background: #FF4948"></div>
+<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#015C73" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9 4.9 19.1"/></svg>
+<div style="display: grid; grid-template-columns: repeat(4, 6px); gap: 8px"><span style="width: 6px; height: 6px; border-radius: 50%; background: #A9D1F5"></span><span style="width: 6px; height: 6px; border-radius: 50%; background: #A9D1F5"></span><span style="width: 6px; height: 6px; border-radius: 50%; background: #A9D1F5"></span><span style="width: 6px; height: 6px; border-radius: 50%; background: #A9D1F5"></span><span style="width: 6px; height: 6px; border-radius: 50%; background: #A9D1F5"></span><span style="width: 6px; height: 6px; border-radius: 50%; background: #A9D1F5"></span><span style="width: 6px; height: 6px; border-radius: 50%; background: #A9D1F5"></span><span style="width: 6px; height: 6px; border-radius: 50%; background: #A9D1F5"></span></div>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="t-regles" style="display: flex; flex-direction: column; gap: 32px">
+<h2 id="t-regles" style="margin: 0; font-size: 36px; line-height: 1.2; color: #006FD6">Règles d'accessibilité</h2>
+<ul class="ds-grid-2" style="list-style: none; margin: 0; padding: 0">
+<li style="background: #E2F3EE; border-radius: 16px; padding: 24px 28px"><strong>Contraste.</strong> 4,5:1 pour le texte courant, 3:1 pour les titres de 24 px et plus et pour les bordures de composants.</li>
+<li style="background: #E2F3EE; border-radius: 16px; padding: 24px 28px"><strong>Focus visible.</strong> Contour de 3 px #0A5CB0, décalé de 2 px, sur chaque élément interactif.</li>
+<li style="background: #E2F3EE; border-radius: 16px; padding: 24px 28px"><strong>Cibles.</strong> Au moins 44 × 44 px pour tout ce qui se clique ou se touche.</li>
+<li style="background: #E2F3EE; border-radius: 16px; padding: 24px 28px"><strong>Couleur.</strong> Jamais seule porteuse d'information : toujours une icône ou un texte en plus.</li>
+<li style="background: #E2F3EE; border-radius: 16px; padding: 24px 28px"><strong>Lisibilité.</strong> Pas de capitales sur plusieurs mots, pas d'italique long, pas de texte sur toute la largeur.</li>
+<li style="background: #E2F3EE; border-radius: 16px; padding: 24px 28px"><strong>Mouvement.</strong> Pas de carrousel automatique ; animations coupées si l'utilisateur réduit les mouvements.</li>
+</ul>
+</section>
+
+</main>
+</div>
+
+<nav aria-label="Prototype"><a href="index.html" class="proto-pill">Sommaire des maquettes</a></nav><style>.proto-pill{position:fixed;left:16px;bottom:16px;z-index:50;display:inline-flex;align-items:center;min-height:44px;padding:8px 18px;border-radius:999px;background:#1E2B3A;color:#FFFFFF !important;font-weight:700;font-size:16px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.25)}.proto-pill:hover{background:#0A5CB0}</style>
+</body>
+</html>

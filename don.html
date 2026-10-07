@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Faire un don — Maquette OLY</title>
+<link rel="icon" href="img/favicon.png">
+
+<style>@font-face{font-family:'Atkinson Hyperlegible';font-weight:400;font-display:swap;src:url('fonts/atkinson-400.woff2') format('woff2')}@font-face{font-family:'Atkinson Hyperlegible';font-weight:700;font-display:swap;src:url('fonts/atkinson-700.woff2') format('woff2')}[hidden]{display:none !important}
+body{margin:0;background:#FAF8F7}
+*{box-sizing:border-box}
+a{color:#0A5CB0;text-underline-offset:3px;text-decoration-thickness:2px}
+a:hover{color:#08498C}
+:focus-visible{outline:3px solid #0A5CB0;outline-offset:2px}
+.wrap{max-width:1344px;margin:0 auto;padding:0 48px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:12px 28px;border-radius:999px;font-family:inherit;font-weight:700;font-size:18px;line-height:1.2;text-decoration:none;border:2px solid transparent;cursor:pointer;text-align:center}
+.btn-primary{background:#D93A39;color:#FFFFFF}
+.btn-primary:hover{background:#B92F2E;color:#FFFFFF}
+.btn-secondary{background:#FFFFFF;color:#0A5CB0;border-color:#0A5CB0}
+.btn-secondary:hover{background:#E3F0FC;color:#08498C}
+.ulink{color:#0A5CB0;font-weight:700;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:2px}
+.topbar-in{display:flex;align-items:center;justify-content:space-between;gap:16px 32px;min-height:96px;flex-wrap:wrap}
+.utils{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.menu-toggle{display:none;align-items:center;gap:10px;min-height:48px;padding:8px 20px;border-radius:999px;border:2px solid #1E2B3A;background:#FFFFFF;color:#1E2B3A;font-family:inherit;font-size:18px;font-weight:700;cursor:pointer}
+.navlist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}
+.nav-item{position:relative;border-right:2px solid #767676}
+.nav-item:last-child{border-right:0}
+.nav-btn{width:100%;min-height:104px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:14px 12px;border:0;background:transparent;font-family:inherit;font-weight:700;font-size:18px;line-height:1.35;color:#1E2B3A;text-align:center;text-decoration:none;cursor:pointer}
+.nav-btn:hover{background:#CFE5FA;color:#1E2B3A}
+.nl{display:block}
+.nav-panel{position:absolute;top:100%;left:0;width:max-content;min-width:300px;max-width:380px;background:#FFFFFF;border-radius:0 0 16px 16px;box-shadow:0 14px 32px rgba(30,43,58,0.18);list-style:none;margin:0;padding:8px 0 12px;z-index:20}
+.nav-item:nth-last-child(-n+2) .nav-panel{left:auto;right:0}
+.nav-sublink{display:block;padding:12px 24px;color:#1E2B3A;text-decoration:none;font-size:18px;line-height:1.4;border-bottom:1px solid #E6E9ED}
+.nav-sublink:hover{background:#E3F0FC;color:#1E2B3A;text-decoration:underline}
+.nav-all{display:block;padding:12px 24px 14px;font-weight:700;font-size:18px}
+.crumbs{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tax-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.don-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:56px;align-items:start}
+.amounts{display:flex;flex-wrap:wrap;gap:12px;border:0;margin:0;padding:0}
+.amount{position:relative}
+.amount input{position:absolute;opacity:0;width:1px;height:1px}
+.amount span{display:inline-flex;align-items:center;gap:8px;min-height:56px;padding:0 26px;border-radius:999px;border:2px solid #0A5CB0;background:#FFFFFF;color:#0A5CB0;font-weight:700;font-size:20px;cursor:pointer}
+.amount input:checked + span{background:#0A5CB0;color:#FFFFFF}
+.amount input:focus-visible + span{outline:3px solid #0A5CB0;outline-offset:3px}
+.amount .tick{display:none}
+.amount input:checked + span .tick{display:inline}
+.ways{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.foot-grid{display:grid;grid-template-columns:1.4fr repeat(4,minmax(0,1fr));gap:40px}
+.foot-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.foot-list a{color:#1E2B3A}
+.foot-list a:hover{color:#0A5CB0}
+@media (max-width:1100px){
+.don-grid{grid-template-columns:1fr;gap:40px}
+.ways{grid-template-columns:1fr}
+.foot-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.menu-toggle{display:inline-flex;order:2}
+.utils{gap:20px}
+.topbar-in{column-gap:24px}
+.skip{position:absolute;left:-10000px}
+.skip:focus{position:static}
+.mainnav{display:none}
+.mainnav.is-open{display:block}
+.navlist{grid-template-columns:1fr}
+.nav-item{border-right:0;border-bottom:2px solid #FFFFFF}
+.nav-btn{flex-direction:row;justify-content:space-between;min-height:60px;padding:14px 24px;text-align:left;font-size:18px}
+.nl{display:inline}
+.nav-panel{position:static;width:auto;max-width:none;min-width:0;box-shadow:none;border-radius:0;padding:0 0 8px}
+.nav-sublink{padding-left:44px}
+.nav-all{padding-left:44px}
+}
+@media (max-width:760px){
+.wrap{padding:0 20px}
+.topbar-in{min-height:0;padding-top:14px;gap:12px}
+.logo-slot{height:48px !important}
+.utils{order:3;width:100%;gap:8px 20px;padding-bottom:14px}
+.utils .btn{width:100%}
+.nav-btn{padding:14px 20px}
+.page-title{font-size:38px !important}
+.hero-deco{display:none !important}
+.tax-grid{grid-template-columns:1fr}
+.embed{padding:24px !important}
+.foot-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 20px}
+.foot-grid>:first-child{grid-column:1/-1}
+.sec{padding-top:56px !important;padding-bottom:56px !important}
+}
+</style>
+
+</head>
+<body>
+
+<div style="background: #FAF8F7; color: #1E2B3A; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; font-size: 18px; line-height: 1.6">
+
+<header style="background: #FFFFFF">
+<div class="wrap topbar-in">
+<a href="accueil.html" class="logo-slot" style="display: inline-flex; align-items: center; height: 64px; text-decoration: none"><img src="img/logo-oly.png" alt="Ouvrir Les Yeux, pour voir demain : accueil" style="display: block; height: 100%; width: auto"></a>
+<nav aria-label="Accès rapides" class="utils">
+<a href="#contenu" class="skip">Aller au contenu</a>
+<a href="a-venir.html" style="display: inline-flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>Rechercher</a>
+<span style="display: inline-flex; align-items: center; gap: 12px">
+<a href="#" lang="fr" aria-current="true" style="color: #1E2B3A; font-weight: 700">Français</a>
+<span aria-hidden="true">·</span>
+<a href="a-venir.html" lang="en" hreflang="en">English</a>
+<span aria-hidden="true">·</span>
+<a href="a-venir.html" lang="es" hreflang="es">Español</a>
+</span>
+<a href="don.html" class="btn btn-primary" aria-current="page">Faire un don</a>
+</nav>
+<button type="button" class="menu-toggle" aria-expanded="false" aria-controls="menu-principal">
+
+<svg class="mt-open" aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+
+
+<svg class="mt-close" hidden aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+
+<span class="mt-label">Menu</span>
+</button>
+</div>
+<nav id="menu-principal" aria-label="Menu principal" class="mainnav" style="border-top: 1px solid #D9DEE5; border-bottom: 1px solid #D9DEE5">
+<ul class="navlist">
+<li class="nav-item" data-bg="#E3F0FC" style="background: #E3F0FC; box-shadow: none"><button type="button" class="nav-btn" aria-expanded="false" aria-controls="panel-noh"><span><span class="nl">Les</span> <span class="nl">NOH</span></span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0"><path d="m6 9 6 6 6-6"/></svg></button><ul id="panel-noh" class="nav-panel" hidden><li><a href="a-venir.html" class="nav-all">Tout savoir sur les NOH</a></li><li><a href="a-venir.html" class="nav-sublink">Que sont ces maladies</a></li><li><a href="a-venir.html" class="nav-sublink">Prévention</a></li><li><a href="page-a.html" class="nav-sublink">Le diagnostic et parcours de soin</a></li><li><a href="a-venir.html" class="nav-sublink">Les traitements</a></li><li><a href="a-venir.html" class="nav-sublink">La recherche</a></li></ul></li><li class="nav-item" data-bg="#E2F3EE" style="background: #E2F3EE; box-shadow: none"><button type="button" class="nav-btn" aria-expanded="false" aria-controls="panel-vie"><span><span class="nl">La vie en situation</span> <span class="nl">de handicap visuel</span></span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0"><path d="m6 9 6 6 6-6"/></svg></button><ul id="panel-vie" class="nav-panel" hidden><li><a href="a-venir.html" class="nav-all">Toute la rubrique</a></li><li><a href="a-venir.html" class="nav-sublink">Les démarches</a></li><li><a href="a-venir.html" class="nav-sublink">Adapter son environnement</a></li><li><a href="a-venir.html" class="nav-sublink">Les aidants</a></li><li><a href="a-venir.html" class="nav-sublink">Les loisirs</a></li></ul></li><li class="nav-item" data-bg="#FFE6E5" style="background: #FFE6E5; box-shadow: none"><button type="button" class="nav-btn" aria-expanded="false" aria-controls="panel-actions"><span><span class="nl">Nos</span> <span class="nl">Actions</span></span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0"><path d="m6 9 6 6 6-6"/></svg></button><ul id="panel-actions" class="nav-panel" hidden><li><a href="a-venir.html" class="nav-all">Toutes nos actions</a></li><li><a href="a-venir.html" class="nav-sublink">La pair-aidance</a></li><li><a href="a-venir.html" class="nav-sublink">Recherche</a></li><li><a href="a-venir.html" class="nav-sublink">Plaidoyer</a></li><li><a href="a-venir.html" class="nav-sublink">La ruche</a></li></ul></li><li class="nav-item" data-bg="#FFEBDD" style="background: #FFEBDD; box-shadow: none"><button type="button" class="nav-btn" aria-expanded="false" aria-controls="panel-actus"><span><span class="nl">Nos</span> <span class="nl">Actualités</span></span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0"><path d="m6 9 6 6 6-6"/></svg></button><ul id="panel-actus" class="nav-panel" hidden><li><a href="actualites.html" class="nav-all">Toutes les actualités</a></li><li><a href="actualites.html" class="nav-sublink">Internes</a></li><li><a href="actualites.html" class="nav-sublink">Externes</a></li></ul></li><li class="nav-item" data-bg="#E3F0FC" style="background: #E3F0FC; box-shadow: none"><button type="button" class="nav-btn" aria-expanded="false" aria-controls="panel-partenaires"><span><span class="nl">Nos</span> <span class="nl">Partenaires</span></span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0"><path d="m6 9 6 6 6-6"/></svg></button><ul id="panel-partenaires" class="nav-panel" hidden><li><a href="a-venir.html" class="nav-all">Tous nos partenaires</a></li><li><a href="a-venir.html" class="nav-sublink">Institutionnels</a></li><li><a href="a-venir.html" class="nav-sublink">Entreprises</a></li><li><a href="a-venir.html" class="nav-sublink">Associations</a></li><li><a href="a-venir.html" class="nav-sublink">Fondations</a></li><li><a href="a-venir.html" class="nav-sublink">Personnalités</a></li></ul></li><li class="nav-item" data-bg="#E2F3EE" style="background: #E2F3EE; box-shadow: none"><button type="button" class="nav-btn" aria-expanded="false" aria-controls="panel-faq"><span><span class="nl">Les Questions</span> <span class="nl">Fréquentes</span></span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0"><path d="m6 9 6 6 6-6"/></svg></button><ul id="panel-faq" class="nav-panel" hidden><li><a href="a-venir.html" class="nav-all">Toutes les questions</a></li><li><a href="a-venir.html" class="nav-sublink">Je suis malade</a></li><li><a href="a-venir.html" class="nav-sublink">Je suis aidant</a></li><li><a href="a-venir.html" class="nav-sublink">Je suis médecin</a></li></ul></li><li class="nav-item" data-bg="#FFE6E5" style="background: #FFE6E5; box-shadow: none"><a href="a-venir.html" class="nav-btn"><span><span class="nl">Notre</span> <span class="nl">boutique</span></span></a></li></ul>
+</nav>
+</header>
+
+<main id="contenu">
+<div style="background: #FFE6E5; padding: 28px 0 64px; position: relative; overflow: hidden">
+<div class="hero-deco" aria-hidden="true" style="position: absolute; right: 9%; top: 44px; width: 190px; height: 190px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center">
+<svg width="110" height="110" viewBox="0 0 24 24" fill="none" stroke="#D93A39" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></svg>
+</div>
+<span class="hero-deco" aria-hidden="true" style="position: absolute; right: 6%; top: 210px; width: 30px; height: 30px; border-radius: 50%; background: #A9D1F5"></span>
+<div class="wrap" style="display: flex; flex-direction: column; gap: 32px; position: relative">
+<nav aria-label="Fil d'Ariane">
+<ol class="crumbs">
+<li><a href="accueil.html">Accueil</a></li>
+<li aria-hidden="true">›</li>
+<li><strong aria-current="page">Faire un don</strong></li>
+</ol>
+</nav>
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 40em">
+<h1 class="page-title" style="margin: 0; font-size: 52px; line-height: 1.12">Faire un don</h1>
+<p style="margin: 0; font-size: 21px">Votre geste soutient les personnes touchées par une NOH, leurs proches et la recherche. Merci !</p>
+</div>
+</div>
+</div>
+
+<section class="sec" aria-labelledby="t-fisc" style="padding: 64px 0 24px">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 24px">
+<h2 id="t-fisc" style="margin: 0; font-size: 32px; line-height: 1.2; color: #006FD6">66 % de votre don déductible de vos impôts</h2>
+<div class="tax-grid">
+<div style="background: #FFFFFF; border-radius: 20px; padding: 28px 32px; display: flex; flex-direction: column; gap: 4px; box-shadow: 0 2px 12px rgba(30,43,58,0.08)">
+<span style="font-size: 20px">Un don de <strong>25 €</strong></span>
+<span style="font-size: 20px">ne vous coûte que</span>
+<strong style="font-size: 44px; line-height: 1.1; color: #015C73">8,50 €</strong>
+</div>
+<div style="background: #FFFFFF; border-radius: 20px; padding: 28px 32px; display: flex; flex-direction: column; gap: 4px; box-shadow: 0 2px 12px rgba(30,43,58,0.08)">
+<span style="font-size: 20px">Un don de <strong>100 €</strong></span>
+<span style="font-size: 20px">ne vous coûte que</span>
+<strong style="font-size: 44px; line-height: 1.1; color: #015C73">34 €</strong>
+</div>
+</div>
+<p style="margin: 0; max-width: 52em">Ouvrir Les Yeux est reconnue association d'assistance et de bienfaisance (décision préfectorale du 2 juillet 2021). Vous recevez un reçu fiscal pour chaque don.</p>
+</div>
+</section>
+
+<section class="sec" aria-labelledby="t-ligne" style="padding: 56px 0 72px">
+<div class="wrap don-grid">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<h2 id="t-ligne" style="margin: 0; font-size: 32px; line-height: 1.2; color: #006FD6">Je fais un don en ligne</h2>
+<p style="margin: 0">Le paiement est sécurisé et géré par notre partenaire HelloAsso. Vous pouvez créer un compte pour retrouver vos reçus, ou continuer sans compte.</p>
+<p style="margin: 0">Vous donnez au nom d'une entreprise ou d'une association ? Cochez « Payer en tant qu'organisme » à la deuxième étape du formulaire.</p>
+</div>
+<form class="embed" aria-labelledby="t-form" style="background: #FFFFFF; border: 2px solid #CFE5FA; border-radius: 20px; padding: 36px; display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: center">
+<h3 id="t-form" style="margin: 0; font-size: 22px">Formulaire de don sécurisé</h3>
+<span style="display: inline-flex; align-items: center; gap: 8px; font-size: 16px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Intégration HelloAsso</span>
+</div>
+<fieldset class="amounts">
+<legend style="font-weight: 700; margin-bottom: 12px; padding: 0">Montant de votre don</legend>
+<label class="amount"><input type="radio" name="montant" value="25"><span>25 €</span></label>
+<label class="amount"><input type="radio" name="montant" value="50" checked><span><svg class="tick" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>50 €</span></label>
+<label class="amount"><input type="radio" name="montant" value="100"><span>100 €</span></label>
+<label class="amount"><input type="radio" name="montant" value="autre"><span>Autre montant</span></label>
+</fieldset>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="don-autre" style="font-weight: 700">Autre montant, en euros</label>
+<input id="don-autre" type="text" inputmode="decimal" placeholder="Exemple : 30" style="height: 56px; max-width: 240px; border: 2px solid #767676; border-radius: 12px; padding: 0 16px; font: inherit; color: #1E2B3A; background: #FFFFFF">
+</div>
+<p style="margin: 0; font-size: 16px">Après déduction fiscale, un don de 50 € vous revient à 17 €.</p>
+<button type="button" class="btn btn-primary" style="align-self: flex-start">Je fais un don</button>
+</form>
+</div>
+</section>
+
+<section class="sec" aria-labelledby="t-cheque" style="background: #E2F3EE; padding: 72px 0">
+<div class="wrap don-grid">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<h2 id="t-cheque" style="margin: 0; font-size: 32px; line-height: 1.2; color: #006FD6">Je fais un don par chèque</h2>
+<p style="margin: 0">Libellez votre chèque à l'ordre d'<strong>Ouvrir Les Yeux</strong> et envoyez-le à l'adresse ci-contre.</p>
+<p style="margin: 0">Pour recevoir votre reçu fiscal sans erreur, joignez le coupon de don ou une feuille avec :</p>
+<ul style="margin: 0; padding-left: 26px">
+<li>vos prénom et nom ;</li>
+<li>votre adresse postale ;</li>
+<li>vos numéros de téléphone ;</li>
+<li>votre adresse e-mail ;</li>
+<li>la raison sociale, si vous donnez au nom d'un organisme.</li>
+</ul>
+</div>
+<div style="display: flex; flex-direction: column; gap: 20px">
+<address style="font-style: normal; background: #FFFFFF; border-radius: 20px; padding: 32px; font-size: 24px; line-height: 1.5">
+<strong>Ouvrir Les Yeux</strong><br>
+Maison des Associations<br>
+45 rue François Gauthier<br>
+62300 Lens
+</address>
+<a href="a-venir.html" style="display: flex; gap: 16px; align-items: center; padding: 18px 22px; background: #FFFFFF; border: 2px solid #0A5CB0; border-radius: 16px; text-decoration: none; color: #1E2B3A">
+<svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+<span><span class="ulink">Télécharger le coupon de don</span><br><span style="font-size: 16px">PDF · [poids du fichier]</span></span>
+</a>
+</div>
+</div>
+</section>
+
+<section class="sec" aria-labelledby="t-autres" style="padding: 72px 0 88px">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 28px">
+<h2 id="t-autres" style="margin: 0; font-size: 32px; line-height: 1.2; color: #006FD6">D'autres façons d'agir</h2>
+<ul class="ways" style="list-style: none; margin: 0; padding: 0">
+<li style="background: #E3F0FC; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 14px; align-items: flex-start">
+<span aria-hidden="true" style="width: 72px; height: 72px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#1E2B3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></span>
+<h3 style="margin: 0; font-size: 24px">Adhérer</h3>
+<p style="margin: 0">Rejoignez l'association et participez à ses décisions.</p>
+<a href="a-venir.html" class="btn btn-secondary" style="margin-top: auto">Adhérer à l'association</a>
+</li>
+<li style="background: #FFEBDD; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 14px; align-items: flex-start">
+<span aria-hidden="true" style="width: 72px; height: 72px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#1E2B3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></svg></span>
+<h3 style="margin: 0; font-size: 24px">Devenir bénévole</h3>
+<p style="margin: 0">Donnez un peu de votre temps, à distance ou près de chez vous.</p>
+<a href="a-venir.html" class="btn btn-secondary" style="margin-top: auto">Devenir bénévole</a>
+</li>
+<li style="background: #E2F3EE; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 14px; align-items: flex-start">
+<span aria-hidden="true" style="width: 72px; height: 72px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#1E2B3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10M19 21V10M9 21v-6h6v6M2 10l10-7 10 7"/></svg></span>
+<h3 style="margin: 0; font-size: 24px">Mécénat et legs</h3>
+<p style="margin: 0">Entreprises et particuliers : soutenez durablement la recherche.</p>
+<a href="a-venir.html" class="btn btn-secondary" style="margin-top: auto">En savoir plus sur le mécénat</a>
+</li>
+</ul>
+</div>
+</section>
+</main>
+
+<footer style="background: #E3F0FC; padding: 72px 0 32px">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 48px">
+<div class="foot-grid">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<img src="img/logo-oly.png" alt="Ouvrir Les Yeux, pour voir demain" style="display: block; height: 64px; width: auto; align-self: flex-start">
+<p style="margin: 0">L'association des personnes touchées par les neuropathies optiques héréditaires et de leurs proches.</p>
+<p style="margin: 0; font-size: 16px">Maison des Associations<br>45 rue François Gauthier<br>62300 Lens</p>
+</div>
+<nav aria-labelledby="f-noh"><h2 id="f-noh" style="margin: 0 0 14px; font-size: 20px">Les NOH</h2><ul class="foot-list"><li><a href="a-venir.html">Que sont ces maladies</a></li><li><a href="a-venir.html">Prévention</a></li><li><a href="page-a.html">Le diagnostic et parcours de soin</a></li><li><a href="a-venir.html">Les traitements</a></li><li><a href="a-venir.html">La recherche</a></li></ul></nav>
+<nav aria-labelledby="f-vie"><h2 id="f-vie" style="margin: 0 0 14px; font-size: 20px">La vie en situation de handicap visuel</h2><ul class="foot-list"><li><a href="a-venir.html">Les démarches</a></li><li><a href="a-venir.html">Adapter son environnement</a></li><li><a href="a-venir.html">Les aidants</a></li><li><a href="a-venir.html">Les loisirs</a></li></ul></nav>
+<nav aria-labelledby="f-agir"><h2 id="f-agir" style="margin: 0 0 14px; font-size: 20px">Agir avec nous</h2><ul class="foot-list"><li><a href="don.html">Faire un don</a></li><li><a href="a-venir.html">Adhérer</a></li><li><a href="a-venir.html">Devenir bénévole</a></li><li><a href="a-venir.html">Notre boutique</a></li></ul></nav>
+<nav aria-labelledby="f-infos"><h2 id="f-infos" style="margin: 0 0 14px; font-size: 20px">Infos pratiques</h2><ul class="foot-list"><li><a href="a-venir.html">Nous contacter</a></li><li><a href="a-venir.html">Plan du site</a></li><li><a href="a-venir.html">Mentions légales</a></li><li><a href="a-venir.html">Politique de confidentialité</a></li><li><a href="a-venir.html">Accessibilité : partiellement conforme</a></li></ul></nav>
+</div>
+<div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap; border-top: 2px solid #A9D1F5; padding-top: 28px">
+<strong>Suivez-nous</strong>
+<a href="a-venir.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 6px 18px; border-radius: 999px; background: #FFFFFF; color: #1E2B3A; font-weight: 700">[Réseau social 1]</a>
+<a href="a-venir.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 6px 18px; border-radius: 999px; background: #FFFFFF; color: #1E2B3A; font-weight: 700">[Réseau social 2]</a>
+<a href="a-venir.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 6px 18px; border-radius: 999px; background: #FFFFFF; color: #1E2B3A; font-weight: 700">[Réseau social 3]</a>
+<span style="margin-left: auto; font-size: 16px">© 2026 Ouvrir Les Yeux</span>
+</div>
+</div>
+</footer>
+
+</div>
+
+<nav aria-label="Prototype"><a href="index.html" class="proto-pill">Sommaire des maquettes</a></nav><style>.proto-pill{position:fixed;left:16px;bottom:16px;z-index:50;display:inline-flex;align-items:center;min-height:44px;padding:8px 18px;border-radius:999px;background:#1E2B3A;color:#FFFFFF !important;font-weight:700;font-size:16px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.25)}.proto-pill:hover{background:#0A5CB0}</style>
+
+<script>
+(function () {
+  var items = document.querySelectorAll('.nav-item');
+  function closeAll(except) {
+    items.forEach(function (li) {
+      var b = li.querySelector('button.nav-btn');
+      if (!b || li === except) return;
+      b.setAttribute('aria-expanded', 'false');
+      var p = document.getElementById(b.getAttribute('aria-controls'));
+      if (p) p.hidden = true;
+      li.style.background = li.dataset.bg;
+      li.style.boxShadow = li.dataset.current ? 'inset 0 -5px 0 #1E2B3A' : 'none';
+      if (li.dataset.current) li.style.background = '#CFE5FA';
+      var s = b.querySelector('svg'); if (s) s.style.transform = 'none';
+    });
+  }
+  items.forEach(function (li) {
+    var b = li.querySelector('button.nav-btn');
+    if (!b) return;
+    b.addEventListener('click', function () {
+      var open = b.getAttribute('aria-expanded') === 'true';
+      closeAll(li);
+      b.setAttribute('aria-expanded', open ? 'false' : 'true');
+      var p = document.getElementById(b.getAttribute('aria-controls'));
+      if (p) p.hidden = open;
+      li.style.background = open && !li.dataset.current ? li.dataset.bg : '#CFE5FA';
+      li.style.boxShadow = (!open || li.dataset.current) ? 'inset 0 -5px 0 #1E2B3A' : 'none';
+      var s = b.querySelector('svg'); if (s) s.style.transform = open ? 'none' : 'rotate(180deg)';
+    });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    var openBtn = document.querySelector('button.nav-btn[aria-expanded="true"]');
+    closeAll(null);
+    if (openBtn) openBtn.focus();
+  });
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.nav-item')) closeAll(null);
+  });
+  var t = document.querySelector('.menu-toggle'), nav = document.getElementById('menu-principal');
+  if (t && nav) t.addEventListener('click', function () {
+    var open = nav.classList.toggle('is-open');
+    t.setAttribute('aria-expanded', open ? 'true' : 'false');
+    t.querySelector('.mt-label').textContent = open ? 'Fermer le menu' : 'Menu';
+    t.querySelector('.mt-open').hidden = open;
+    t.querySelector('.mt-close').hidden = !open;
+  });
+})();
+</script>
+</body>
+</html>

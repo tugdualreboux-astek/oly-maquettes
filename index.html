@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Maquettes du nouveau site — Ouvrir Les Yeux</title>
+<link rel="icon" href="img/favicon.png">
+<style>
+@font-face{font-family:'Atkinson Hyperlegible';font-weight:400;font-display:swap;src:url('fonts/atkinson-400.woff2') format('woff2')}
+@font-face{font-family:'Atkinson Hyperlegible';font-weight:700;font-display:swap;src:url('fonts/atkinson-700.woff2') format('woff2')}
+*{box-sizing:border-box}
+body{margin:0;background:#FAF8F7;color:#1E2B3A;font-family:'Atkinson Hyperlegible',system-ui,sans-serif;font-size:18px;line-height:1.6}
+a{color:#0A5CB0;text-underline-offset:3px;text-decoration-thickness:2px}
+:focus-visible{outline:3px solid #0A5CB0;outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+header{background:#E3F0FC;padding:40px 0 56px}
+h1{margin:28px 0 12px;font-size:46px;line-height:1.15}
+.intro{margin:0;font-size:20px;max-width:44em}
+.note{display:flex;gap:14px;align-items:flex-start;margin-top:28px;padding:18px 22px;background:#FFFFFF;border-radius:16px;max-width:52em}
+main{padding:56px 0 80px}
+h2{margin:0 0 20px;font-size:30px;line-height:1.25;color:#006FD6}
+.grid{list-style:none;margin:0 0 56px;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.card{display:flex;flex-direction:column;gap:8px;height:100%;padding:24px 26px;border-radius:18px;background:#FFFFFF;color:#1E2B3A;text-decoration:none;box-shadow:0 2px 12px rgba(30,43,58,.08)}
+.card:hover{box-shadow:0 6px 20px rgba(30,43,58,.16);color:#1E2B3A}
+.card strong{font-size:22px;line-height:1.3}
+.go{margin-top:auto;color:#0A5CB0;font-weight:700;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:2px}
+.tag{align-self:flex-start;padding:2px 12px;border-radius:999px;font-size:16px;font-weight:700}
+footer{background:#E3F0FC;padding:32px 0;font-size:16px}
+@media (max-width:760px){.wrap{padding:0 20px}h1{font-size:34px}.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap">
+<img src="img/logo-oly.png" alt="Ouvrir Les Yeux, pour voir demain" style="display:block;height:64px;width:auto">
+<h1>Maquettes du nouveau site</h1>
+<p class="intro">Prototype navigable de la refonte du site d'Ouvrir Les Yeux. Les pages se parcourent comme un vrai site, sur ordinateur et sur téléphone.</p>
+<div class="note">
+<svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+<p style="margin:0"><strong>Document de travail, non contractuel.</strong> Les photos, dates et certains textes sont provisoires (notés entre crochets). Les liens vers des pages pas encore maquettées mènent à une page d'attente.</p>
+</div>
+</div>
+</header>
+<main>
+<div class="wrap">
+<h2>Les pages</h2>
+<ul class="grid">
+<li><a class="card" href="accueil.html"><span class="tag" style="background:#E3F0FC">Page d'accueil</span><strong>Accueil</strong><span>Engagements, agenda, actualités, newsletter et appel à agir.</span><span class="go">Voir la page</span></a></li>
+<li><a class="card" href="actualites.html"><span class="tag" style="background:#FFEBDD">Liste</span><strong>Nos Actualités</strong><span>Filtres internes et externes, cartes, pagination.</span><span class="go">Voir la page</span></a></li>
+<li><a class="card" href="article.html"><span class="tag" style="background:#FFEBDD">Gabarit</span><strong>Article / actualité</strong><span>Exemple : le prix Espoir d'OLY pour les jeunes chercheurs.</span><span class="go">Voir la page</span></a></li>
+<li><a class="card" href="don.html"><span class="tag" style="background:#FFE6E5">Page clé</span><strong>Faire un don</strong><span>Avantage fiscal, don en ligne HelloAsso, don par chèque.</span><span class="go">Voir la page</span></a></li>
+<li><a class="card" href="page-a.html"><span class="tag" style="background:#E2F3EE">Gabarit · variante A</span><strong>Page de contenu, une colonne</strong><span>Exemple : le diagnostic et parcours de soin.</span><span class="go">Voir la page</span></a></li>
+<li><a class="card" href="page-b.html"><span class="tag" style="background:#E2F3EE">Gabarit · variante B</span><strong>Page de contenu, avec colonne latérale</strong><span>Même contenu, avec sommaire, contact et don sur le côté. À comparer avec la variante A.</span><span class="go">Voir la page</span></a></li>
+</ul>
+<h2>Pour l'équipe projet</h2>
+<ul class="grid">
+<li><a class="card" href="systeme-de-design.html"><span class="tag" style="background:#CFE5FA">Référence</span><strong>Système de design</strong><span>Logo, couleurs et contrastes, typographie, boutons, composants, règles d'accessibilité.</span><span class="go">Voir la page</span></a></li>
+</ul>
+</div>
+</main>
+<footer>
+<div class="wrap">Refonte du site Ouvrir Les Yeux · Maquettes de référence · Dernière mise à jour : <span id="maj">octobre 2026</span></div>
+</footer>
+</body>
+</html>

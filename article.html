@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Article — Maquette OLY</title>
+<link rel="icon" href="img/favicon.png">
+
+<style>@font-face{font-family:'Atkinson Hyperlegible';font-weight:400;font-display:swap;src:url('fonts/atkinson-400.woff2') format('woff2')}@font-face{font-family:'Atkinson Hyperlegible';font-weight:700;font-display:swap;src:url('fonts/atkinson-700.woff2') format('woff2')}[hidden]{display:none !important}
+body{margin:0;background:#FAF8F7}
+*{box-sizing:border-box}
+a{color:#0A5CB0;text-underline-offset:3px;text-decoration-thickness:2px}
+a:hover{color:#08498C}
+:focus-visible{outline:3px solid #0A5CB0;outline-offset:2px}
+.wrap{max-width:1344px;margin:0 auto;padding:0 48px}
+.read{max-width:760px;margin:0 auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:12px 28px;border-radius:999px;font-family:inherit;font-weight:700;font-size:18px;line-height:1.2;text-decoration:none;border:2px solid transparent;cursor:pointer;text-align:center}
+.btn-primary{background:#D93A39;color:#FFFFFF}
+.btn-primary:hover{background:#B92F2E;color:#FFFFFF}
+.btn-secondary{background:#FFFFFF;color:#0A5CB0;border-color:#0A5CB0}
+.btn-secondary:hover{background:#E3F0FC;color:#08498C}
+.btn-soft{background:#CFE5FA;color:#1E2B3A}
+.btn-soft:hover{background:#A9D1F5;color:#1E2B3A}
+.ulink{color:#0A5CB0;font-weight:700;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:2px}
+.topbar-in{display:flex;align-items:center;justify-content:space-between;gap:16px 32px;min-height:96px;flex-wrap:wrap}
+.utils{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.menu-toggle{display:none;align-items:center;gap:10px;min-height:48px;padding:8px 20px;border-radius:999px;border:2px solid #1E2B3A;background:#FFFFFF;color:#1E2B3A;font-family:inherit;font-size:18px;font-weight:700;cursor:pointer}
+.navlist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}
+.nav-item{position:relative;border-right:2px solid #767676}
+.nav-item:last-child{border-right:0}
+.nav-btn{width:100%;min-height:104px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:14px 12px;border:0;background:transparent;font-family:inherit;font-weight:700;font-size:18px;line-height:1.35;color:#1E2B3A;text-align:center;text-decoration:none;cursor:pointer}
+.nav-btn:hover{background:#CFE5FA;color:#1E2B3A}
+.nl{display:block}
+.nav-panel{position:absolute;top:100%;left:0;width:max-content;min-width:300px;max-width:380px;background:#FFFFFF;border-radius:0 0 16px 16px;box-shadow:0 14px 32px rgba(30,43,58,0.18);list-style:none;margin:0;padding:8px 0 12px;z-index:20}
+.nav-item:nth-last-child(-n+2) .nav-panel{left:auto;right:0}
+.nav-sublink{display:block;padding:12px 24px;color:#1E2B3A;text-decoration:none;font-size:18px;line-height:1.4;border-bottom:1px solid #E6E9ED}
+.nav-sublink:hover{background:#E3F0FC;color:#1E2B3A;text-decoration:underline}
+.nav-all{display:block;padding:12px 24px 14px;font-weight:700;font-size:18px}
+.crumbs{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.prose{font-size:20px;line-height:1.7}
+.prose h2{margin:56px 0 16px;font-size:32px;line-height:1.25;color:#006FD6}
+.prose h3{margin:32px 0 12px;font-size:24px;line-height:1.3}
+.prose p{margin:0 0 20px}
+.prose ul{margin:0 0 24px;padding-left:28px}
+.prose li{margin-bottom:10px}
+.card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.card{display:flex;flex-direction:column;height:100%;background:#FFFFFF;border-radius:16px;overflow:hidden;text-decoration:none;color:#1E2B3A;box-shadow:0 2px 12px rgba(30,43,58,0.08)}
+.card:hover{color:#1E2B3A;box-shadow:0 6px 20px rgba(30,43,58,0.16)}
+.card-img{aspect-ratio:16/10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:16px}
+.card-body{padding:22px;display:flex;flex-direction:column;gap:10px;flex-grow:1}
+.badge{padding:2px 12px;border-radius:999px;font-size:16px;font-weight:700}
+.share{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:12px}
+.agir-btns{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.foot-grid{display:grid;grid-template-columns:1.4fr repeat(4,minmax(0,1fr));gap:40px}
+.foot-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.foot-list a{color:#1E2B3A}
+.foot-list a:hover{color:#0A5CB0}
+@media (max-width:1100px){
+.card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.agir-btns{grid-template-columns:repeat(2,minmax(0,1fr))}
+.foot-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.menu-toggle{display:inline-flex;order:2}
+.utils{gap:20px}
+.topbar-in{column-gap:24px}
+.skip{position:absolute;left:-10000px}
+.skip:focus{position:static}
+.mainnav{display:none}
+.mainnav.is-open{display:block}
+.navlist{grid-template-columns:1fr}
+.nav-item{border-right:0;border-bottom:2px solid #FFFFFF}
+.nav-btn{flex-direction:row;justify-content:space-between;min-height:60px;padding:14px 24px;text-align:left;font-size:18px}
+.nl{display:inline}
+.nav-panel{position:static;width:auto;max-width:none;min-width:0;box-shadow:none;border-radius:0;padding:0 0 8px}
+.nav-sublink{padding-left:44px}
+.nav-all{padding-left:44px}
+}
+@media (max-width:760px){
+.wrap{padding:0 20px}
+.topbar-in{min-height:0;padding-top:14px;gap:12px}
+.logo-slot{height:48px !important}
+.utils{order:3;width:100%;gap:8px 20px;padding-bottom:14px}
+.utils .btn{width:100%}
+.nav-btn{padding:14px 20px}
+.nav-sublink{padding-left:40px}
+.nav-all{padding-left:40px}
+.page-title{font-size:34px !important}
+.prose{font-size:19px}
+.prose h2{font-size:28px;margin-top:44px}
+.card-grid{grid-template-columns:1fr}
+.agir-btns{grid-template-columns:1fr}
+.foot-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 20px}
+.foot-grid>:first-child{grid-column:1/-1}
+.sec{padding-top:56px !important;padding-bottom:56px !important}
+}
+</style>
+
+</head>
+<body>
+
+<div style="background: #FAF8F7; color: #1E2B3A; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; font-size: 18px; line-height: 1.6">
+
+<header style="background: #FFFFFF">
+<div class="wrap topbar-in">
+<a href="accueil.html" class="logo-slot" style="display: inline-flex; align-items: center; height: 64px; text-decoration: none"><img src="img/logo-oly.png" alt="Ouvrir Les Yeux, pour voir demain : accueil" style="display: block; height: 100%; width: auto"></a>
+<nav aria-label="Accès rapides" class="utils">
+<a href="#contenu" class="skip">Aller au contenu</a>
+<a href="a-venir.html" style="display: inline-flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>Rechercher</a>
+<span style="display: inline-flex; align-items: center; gap: 12px">
+<a href="#" lang="fr" aria-current="true" style="color: #1E2B3A; font-weight: 700">Français</a>
+<span aria-hidden="true">·</span>
+<a href="a-venir.html" lang="en" hreflang="en">English</a>
+<span aria-hidden="true">·</span>
+<a href="a-venir.html" lang="es" hreflang="es">Español</a>
+</span>
+<a href="don.html" class="btn btn-primary">Faire un don</a>
+</nav>
+<button type="button" class="menu-toggle" aria-expanded="false" aria-controls="menu-principal">
+
+<svg class="mt-open" aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+
+
+<svg class="mt-close" hidden aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+
+<span class="mt-label">Menu</span>
+</button>
+</div>
+<nav id="menu-principal" aria-label="Menu principal" class="mainnav" style="border-top: 1px solid #D9DEE5; border-bottom: 1px solid #D9DEE5">
+<ul class="navlist">
+<li class="nav-item" data-bg="#E3F0FC" style="background: #E3F0FC; box-shadow: none"><button type="button" class="nav-btn" aria-expanded="false" aria-controls="panel-noh"><span><span class="nl">Les</span> <span class="nl">NOH</span></span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0"><path d="m6 9 6 6 6-6"/></svg></button><ul id="panel-noh" class="nav-panel" hidden><li><a href="a-venir.html" class="nav-all">Tout savoir sur les NOH</a></li><li><a href="a-venir.html" class="nav-sublink">Que sont ces maladies</a></li><li><a href="a-venir.html" class="nav-sublink">Prévention</a></li><li><a href="page-a.html" class="nav-sublink">Le diagnostic et parcours de soin</a></li><li><a href="a-venir.html" class="nav-sublink">Les traitements</a></li><li><a href="a-venir.html" class="nav-sublink">La recherche</a></li></ul></li><li class="nav-item" data-bg="#E2F3EE" style="background: #E2F3EE; box-shadow: none"><button type="button" class="nav-btn" aria-expanded="false" aria-controls="panel-vie"><span><span class="nl">La vie en situation</span> <span class="nl">de handicap visuel</span></span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0"><path d="m6 9 6 6 6-6"/></svg></button><ul id="panel-vie" class="nav-panel" hidden><li><a href="a-venir.html" class="nav-all">Toute la rubrique</a></li><li><a href="a-venir.html" class="nav-sublink">Les démarches</a></li><li><a href="a-venir.html" class="nav-sublink">Adapter son environnement</a></li><li><a href="a-venir.html" class="nav-sublink">Les aidants</a></li><li><a href="a-venir.html" class="nav-sublink">Les loisirs</a></li></ul></li><li class="nav-item" data-bg="#FFE6E5" style="background: #FFE6E5; box-shadow: none"><button type="button" class="nav-btn" aria-expanded="false" aria-controls="panel-actions"><span><span class="nl">Nos</span> <span class="nl">Actions</span></span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0"><path d="m6 9 6 6 6-6"/></svg></button><ul id="panel-actions" class="nav-panel" hidden><li><a href="a-venir.html" class="nav-all">Toutes nos actions</a></li><li><a href="a-venir.html" class="nav-sublink">La pair-aidance</a></li><li><a href="a-venir.html" class="nav-sublink">Recherche</a></li><li><a href="a-venir.html" class="nav-sublink">Plaidoyer</a></li><li><a href="a-venir.html" class="nav-sublink">La ruche</a></li></ul></li><li class="nav-item" data-bg="#FFEBDD" data-current="1" style="background: #CFE5FA; box-shadow: inset 0 -5px 0 #1E2B3A"><button type="button" class="nav-btn" aria-expanded="false" aria-controls="panel-actus"><span><span class="nl">Nos</span> <span class="nl">Actualités</span></span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0"><path d="m6 9 6 6 6-6"/></svg></button><ul id="panel-actus" class="nav-panel" hidden><li><a href="actualites.html" class="nav-all">Toutes les actualités</a></li><li><a href="actualites.html" class="nav-sublink">Internes</a></li><li><a href="actualites.html" class="nav-sublink">Externes</a></li></ul></li><li class="nav-item" data-bg="#E3F0FC" style="background: #E3F0FC; box-shadow: none"><button type="button" class="nav-btn" aria-expanded="false" aria-controls="panel-partenaires"><span><span class="nl">Nos</span> <span class="nl">Partenaires</span></span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0"><path d="m6 9 6 6 6-6"/></svg></button><ul id="panel-partenaires" class="nav-panel" hidden><li><a href="a-venir.html" class="nav-all">Tous nos partenaires</a></li><li><a href="a-venir.html" class="nav-sublink">Institutionnels</a></li><li><a href="a-venir.html" class="nav-sublink">Entreprises</a></li><li><a href="a-venir.html" class="nav-sublink">Associations</a></li><li><a href="a-venir.html" class="nav-sublink">Fondations</a></li><li><a href="a-venir.html" class="nav-sublink">Personnalités</a></li></ul></li><li class="nav-item" data-bg="#E2F3EE" style="background: #E2F3EE; box-shadow: none"><button type="button" class="nav-btn" aria-expanded="false" aria-controls="panel-faq"><span><span class="nl">Les Questions</span> <span class="nl">Fréquentes</span></span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0"><path d="m6 9 6 6 6-6"/></svg></button><ul id="panel-faq" class="nav-panel" hidden><li><a href="a-venir.html" class="nav-all">Toutes les questions</a></li><li><a href="a-venir.html" class="nav-sublink">Je suis malade</a></li><li><a href="a-venir.html" class="nav-sublink">Je suis aidant</a></li><li><a href="a-venir.html" class="nav-sublink">Je suis médecin</a></li></ul></li><li class="nav-item" data-bg="#FFE6E5" style="background: #FFE6E5; box-shadow: none"><a href="a-venir.html" class="nav-btn"><span><span class="nl">Notre</span> <span class="nl">boutique</span></span></a></li></ul>
+</nav>
+</header>
+
+<main id="contenu">
+<article>
+<div class="wrap" style="padding-top: 28px">
+<nav aria-label="Fil d'Ariane">
+<ol class="crumbs">
+<li><a href="accueil.html">Accueil</a></li>
+<li aria-hidden="true">›</li>
+<li><a href="actualites.html">Nos Actualités</a></li>
+<li aria-hidden="true">›</li>
+<li><a href="actualites.html">Internes</a></li>
+<li aria-hidden="true">›</li>
+<li><strong aria-current="page">Prix Espoir d'OLY</strong></li>
+</ol>
+</nav>
+</div>
+
+<div class="wrap" style="padding-top: 48px">
+<header class="read" style="display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap; font-size: 16px">
+<span class="badge" style="background: #CFE5FA">Interne</span>
+<span>Publié le [date]</span>
+<span aria-hidden="true">·</span>
+<span>4 min de lecture</span>
+</div>
+<h1 class="page-title" style="margin: 0; font-size: 46px; line-height: 1.15">Prix Espoir d'OLY : un prix pour les jeunes chercheurs sur les NOH</h1>
+<p style="margin: 0; font-size: 22px; line-height: 1.6">L'association récompense de jeunes docteurs en sciences et en médecine dont les travaux font progresser la connaissance et la prise en charge des neuropathies optiques héréditaires.</p>
+</header>
+</div>
+
+<div class="wrap" style="padding-top: 40px">
+<figure style="margin: 0 auto; max-width: 1080px">
+<div style="aspect-ratio: 21 / 9; border-radius: 20px; background: #CFE5FA; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center; padding: 24px">
+<svg aria-hidden="true" width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#1E2B3A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg>
+<span>Photo principale de l'article (à fournir par OLY)</span>
+</div>
+<figcaption style="margin-top: 12px; font-size: 16px">Légende de la photo : qui, où, quand. [À compléter]</figcaption>
+</figure>
+</div>
+
+<div class="wrap prose" style="padding-top: 24px; padding-bottom: 72px">
+<div class="read">
+<p>L'association Ouvrir Les Yeux attribue un prix à de jeunes docteurs en sciences et en médecine dont les résultats peuvent faire progresser les connaissances sur la physiopathologie, le diagnostic ou la prise en charge thérapeutique des neuropathies optiques héréditaires (NOH).</p>
+<blockquote style="margin: 36px 0; padding: 24px 28px; background: #E3F0FC; border-left: 8px solid #006FD6; border-radius: 0 16px 16px 0; font-size: 22px; font-weight: 700; line-height: 1.5">Les neuropathies optiques héréditaires sont des maladies rares, la plupart mitochondriales. Elles touchent en France plusieurs milliers de personnes de tout âge.</blockquote>
+
+<h2>Calendrier</h2>
+<ul>
+<li><strong>Lundi 16 mars 2026 à 17 h</strong> : date limite de dépôt des dossiers.</li>
+<li><strong>Avril 2026</strong> : désignation et information du ou de la lauréat·e.</li>
+<li><strong>Avril–mai 2026</strong> : remise du prix Ouvrir Les Yeux 2026.</li>
+</ul>
+
+<aside aria-labelledby="t-retenir" style="margin: 32px 0; padding: 24px 28px; background: #E2F3EE; border-radius: 16px; display: flex; gap: 18px; align-items: flex-start">
+<svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1E2B3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 4px"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2Z"/></svg>
+<div>
+<h3 id="t-retenir" style="margin: 0 0 6px; font-size: 22px">À retenir</h3>
+<p style="margin: 0">Le dossier complet est envoyé en un seul fichier PDF avant le lundi 16 mars 2026 à 17 h.</p>
+</div>
+</aside>
+
+<h2>Qui peut candidater ?</h2>
+<p>Les candidat·es de formation médicale ou scientifique <strong>qui ont soutenu ou soutiendront leur thèse de doctorat en sciences, ou d'exercice en médecine ou en pharmacie, entre le 1er septembre 2023 et le 1er octobre 2026</strong>. Les travaux peuvent être fondamentaux, translationnels ou cliniques, avec un intérêt direct ou indirect pour les NOH.</p>
+
+<h2>Le prix</h2>
+<ul>
+<li>Prix de thèse de doctorat en sciences : <strong>1 000 euros</strong>.</li>
+<li>Prix de thèse d'exercice en médecine ou pharmacie : <strong>500 euros</strong>.</li>
+</ul>
+
+<h2>La sélection</h2>
+<p>Le jury est composé des membres du <a href="a-venir.html">comité médico-scientifique</a> de l'association. Les critères majeurs sont la qualité scientifique des travaux et leur intérêt dans le contexte des NOH.</p>
+
+<h2>Le dossier de candidature</h2>
+<ul>
+<li>La fiche de renseignements.</li>
+<li>Une lettre de candidature de moins de 1 000 mots.</li>
+<li>Un résumé grand public des travaux (1 000 mots au plus).</li>
+<li>Le CV du ou de la candidat·e.</li>
+<li>Une copie du ou des articles publiés.</li>
+<li>Une lettre de recommandation d'un référent scientifique.</li>
+<li>Un document attestant que la thèse est ou sera soutenue au plus tard le 1er octobre 2026.</li>
+</ul>
+
+<a href="a-venir.html" style="display: flex; gap: 18px; align-items: center; margin: 32px 0 0; padding: 20px 24px; background: #FFFFFF; border: 2px solid #0A5CB0; border-radius: 16px; text-decoration: none; color: #1E2B3A">
+<span aria-hidden="true" style="flex-shrink: 0; width: 56px; height: 56px; border-radius: 12px; background: #E3F0FC; display: flex; align-items: center; justify-content: center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1E2B3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg></span>
+<span style="display: flex; flex-direction: column"><span class="ulink" style="font-size: 20px">Télécharger la fiche de renseignements</span><span style="font-size: 16px">PDF · [poids du fichier]</span></span>
+</a>
+
+<div style="margin-top: 56px; padding-top: 32px; border-top: 2px solid #D9DEE5; display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-size: 24px">Partager cet article</h2>
+<ul class="share">
+<li><a href="a-venir.html" class="btn btn-soft">Facebook</a></li>
+<li><a href="a-venir.html" class="btn btn-soft">LinkedIn</a></li>
+<li><a href="a-venir.html" class="btn btn-soft"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-9 5.7a2 2 0 0 1-2 0L2 7"/></svg>Par e-mail</a></li>
+<li><button type="button" class="btn btn-soft"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>Copier le lien</button></li>
+</ul>
+</div>
+</div>
+</div>
+</article>
+
+<section class="sec" aria-labelledby="t-aussi" style="background: #FFFFFF; padding: 80px 0">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 32px">
+<h2 id="t-aussi" style="margin: 0; font-size: 36px; line-height: 1.2; color: #006FD6">À lire aussi</h2>
+<ul class="card-grid" style="list-style: none; margin: 0; padding: 0">
+<li><a href="article.html" class="card" style="background: #FAF8F7"><span class="card-img" style="background: #E2F3EE"><svg aria-hidden="true" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1E2B3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg>Photo de l'article</span><span class="card-body"><span style="display: flex; gap: 12px; align-items: center"><span class="badge" style="background: #CFE5FA">Interne</span><span style="font-size: 16px">[date]</span></span><strong style="font-size: 22px; line-height: 1.35">Projet ERASMUS+ Open Up : les productions en ligne</strong><span class="ulink" style="margin-top: auto">Lire l'article</span></span></a></li>
+<li><a href="article.html" class="card" style="background: #FAF8F7"><span class="card-img" style="background: #FFE6E5"><svg aria-hidden="true" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1E2B3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg>Photo de l'article</span><span class="card-body"><span style="display: flex; gap: 12px; align-items: center"><span class="badge" style="background: #FFEBDD">Externe</span><span style="font-size: 16px">[date]</span></span><strong style="font-size: 22px; line-height: 1.35">PNDS : les protocoles de soins des NOH</strong><span class="ulink" style="margin-top: auto">Lire l'article</span></span></a></li>
+<li><a href="article.html" class="card" style="background: #FAF8F7"><span class="card-img" style="background: #FFEBDD"><svg aria-hidden="true" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1E2B3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg>Photo de l'article</span><span class="card-body"><span style="display: flex; gap: 12px; align-items: center"><span class="badge" style="background: #CFE5FA">Interne</span><span style="font-size: 16px">[date]</span></span><strong style="font-size: 22px; line-height: 1.35">Taxe d'apprentissage : un geste simple pour la recherche</strong><span class="ulink" style="margin-top: auto">Lire l'article</span></span></a></li>
+</ul>
+</div>
+</section>
+
+<section class="sec" aria-labelledby="t-agir" style="background: #FFE6E5; padding-top: 80px; padding-bottom: 80px">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-direction: column; gap: 12px; max-width: 46em">
+<h2 id="t-agir" style="margin: 0; font-size: 36px; line-height: 1.2; color: #006FD6">Agir avec nous</h2>
+<p style="margin: 0; font-size: 20px">Chaque geste compte : votre soutien fait avancer la recherche et l'accompagnement des personnes touchées.</p>
+</div>
+<div class="agir-btns">
+<a href="don.html" class="btn btn-primary">Faire un don</a>
+<a href="a-venir.html" class="btn btn-secondary">Adhérer</a>
+<a href="a-venir.html" class="btn btn-secondary">Devenir bénévole</a>
+<a href="a-venir.html" class="btn btn-secondary">Notre boutique</a>
+</div>
+</div>
+</section>
+</main>
+
+<footer style="background: #E3F0FC; padding: 72px 0 32px">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 48px">
+<div class="foot-grid">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<img src="img/logo-oly.png" alt="Ouvrir Les Yeux, pour voir demain" style="display: block; height: 64px; width: auto; align-self: flex-start">
+<p style="margin: 0">L'association des personnes touchées par les neuropathies optiques héréditaires et de leurs proches.</p>
+<p style="margin: 0; font-size: 16px">Maison des Associations<br>45 rue François Gauthier<br>62300 Lens</p>
+</div>
+<nav aria-labelledby="f-noh"><h2 id="f-noh" style="margin: 0 0 14px; font-size: 20px">Les NOH</h2><ul class="foot-list"><li><a href="a-venir.html">Que sont ces maladies</a></li><li><a href="a-venir.html">Prévention</a></li><li><a href="page-a.html">Le diagnostic et parcours de soin</a></li><li><a href="a-venir.html">Les traitements</a></li><li><a href="a-venir.html">La recherche</a></li></ul></nav>
+<nav aria-labelledby="f-vie"><h2 id="f-vie" style="margin: 0 0 14px; font-size: 20px">La vie en situation de handicap visuel</h2><ul class="foot-list"><li><a href="a-venir.html">Les démarches</a></li><li><a href="a-venir.html">Adapter son environnement</a></li><li><a href="a-venir.html">Les aidants</a></li><li><a href="a-venir.html">Les loisirs</a></li></ul></nav>
+<nav aria-labelledby="f-agir"><h2 id="f-agir" style="margin: 0 0 14px; font-size: 20px">Agir avec nous</h2><ul class="foot-list"><li><a href="don.html">Faire un don</a></li><li><a href="a-venir.html">Adhérer</a></li><li><a href="a-venir.html">Devenir bénévole</a></li><li><a href="a-venir.html">Notre boutique</a></li></ul></nav>
+<nav aria-labelledby="f-infos"><h2 id="f-infos" style="margin: 0 0 14px; font-size: 20px">Infos pratiques</h2><ul class="foot-list"><li><a href="a-venir.html">Nous contacter</a></li><li><a href="a-venir.html">Plan du site</a></li><li><a href="a-venir.html">Mentions légales</a></li><li><a href="a-venir.html">Politique de confidentialité</a></li><li><a href="a-venir.html">Accessibilité : partiellement conforme</a></li></ul></nav>
+</div>
+<div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap; border-top: 2px solid #A9D1F5; padding-top: 28px">
+<strong>Suivez-nous</strong>
+<a href="a-venir.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 6px 18px; border-radius: 999px; background: #FFFFFF; color: #1E2B3A; font-weight: 700">[Réseau social 1]</a>
+<a href="a-venir.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 6px 18px; border-radius: 999px; background: #FFFFFF; color: #1E2B3A; font-weight: 700">[Réseau social 2]</a>
+<a href="a-venir.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 6px 18px; border-radius: 999px; background: #FFFFFF; color: #1E2B3A; font-weight: 700">[Réseau social 3]</a>
+<span style="margin-left: auto; font-size: 16px">© 2026 Ouvrir Les Yeux</span>
+</div>
+</div>
+</footer>
+
+</div>
+
+<nav aria-label="Prototype"><a href="index.html" class="proto-pill">Sommaire des maquettes</a></nav><style>.proto-pill{position:fixed;left:16px;bottom:16px;z-index:50;display:inline-flex;align-items:center;min-height:44px;padding:8px 18px;border-radius:999px;background:#1E2B3A;color:#FFFFFF !important;font-weight:700;font-size:16px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.25)}.proto-pill:hover{background:#0A5CB0}</style>
+
+<script>
+(function () {
+  var items = document.querySelectorAll('.nav-item');
+  function closeAll(except) {
+    items.forEach(function (li) {
+      var b = li.querySelector('button.nav-btn');
+      if (!b || li === except) return;
+      b.setAttribute('aria-expanded', 'false');
+      var p = document.getElementById(b.getAttribute('aria-controls'));
+      if (p) p.hidden = true;
+      li.style.background = li.dataset.bg;
+      li.style.boxShadow = li.dataset.current ? 'inset 0 -5px 0 #1E2B3A' : 'none';
+      if (li.dataset.current) li.style.background = '#CFE5FA';
+      var s = b.querySelector('svg'); if (s) s.style.transform = 'none';
+    });
+  }
+  items.forEach(function (li) {
+    var b = li.querySelector('button.nav-btn');
+    if (!b) return;
+    b.addEventListener('click', function () {
+      var open = b.getAttribute('aria-expanded') === 'true';
+      closeAll(li);
+      b.setAttribute('aria-expanded', open ? 'false' : 'true');
+      var p = document.getElementById(b.getAttribute('aria-controls'));
+      if (p) p.hidden = open;
+      li.style.background = open && !li.dataset.current ? li.dataset.bg : '#CFE5FA';
+      li.style.boxShadow = (!open || li.dataset.current) ? 'inset 0 -5px 0 #1E2B3A' : 'none';
+      var s = b.querySelector('svg'); if (s) s.style.transform = open ? 'none' : 'rotate(180deg)';
+    });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    var openBtn = document.querySelector('button.nav-btn[aria-expanded="true"]');
+    closeAll(null);
+    if (openBtn) openBtn.focus();
+  });
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.nav-item')) closeAll(null);
+  });
+  var t = document.querySelector('.menu-toggle'), nav = document.getElementById('menu-principal');
+  if (t && nav) t.addEventListener('click', function () {
+    var open = nav.classList.toggle('is-open');
+    t.setAttribute('aria-expanded', open ? 'true' : 'false');
+    t.querySelector('.mt-label').textContent = open ? 'Fermer le menu' : 'Menu';
+    t.querySelector('.mt-open').hidden = open;
+    t.querySelector('.mt-close').hidden = !open;
+  });
+})();
+</script>
+</body>
+</html>
