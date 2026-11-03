@@ -98,9 +98,10 @@ a:hover{color:#08498C}
 </style>
 
 
+<style>.proto-bar{display:flex;flex-wrap:wrap;gap:4px 20px;justify-content:center;align-items:center;padding:8px 20px;background:#1E2B3A;color:#FFFFFF;font-family:'Atkinson Hyperlegible',system-ui,sans-serif;font-size:16px;line-height:1.4}.proto-bar a{color:#FFFFFF;font-weight:700;text-decoration:underline;text-underline-offset:3px;min-height:32px;display:inline-flex;align-items:center}.proto-bar a:hover{color:#CFE5FA}.proto-bar a:focus-visible{outline:3px solid #FFFFFF;outline-offset:2px}</style>
 </head>
 <body>
-<nav aria-label="Prototype" class="proto-bar"><span>Maquette de travail, non contractuelle</span><a href="index.html">Sommaire des maquettes</a></nav><style>.proto-bar{display:flex;flex-wrap:wrap;gap:4px 20px;justify-content:center;align-items:center;padding:8px 20px;background:#1E2B3A;color:#FFFFFF;font-family:'Atkinson Hyperlegible',system-ui,sans-serif;font-size:16px;line-height:1.4}.proto-bar a{color:#FFFFFF;font-weight:700;text-decoration:underline;text-underline-offset:3px;min-height:32px;display:inline-flex;align-items:center}.proto-bar a:hover{color:#CFE5FA}.proto-bar a:focus-visible{outline:3px solid #FFFFFF;outline-offset:2px}</style>
+<nav aria-label="Prototype" class="proto-bar"><span>Maquette de travail, non contractuelle</span><a href="index.html">Sommaire des maquettes</a></nav>
 
 <div style="background: #FAF8F7; color: #1E2B3A; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; font-size: 18px; line-height: 1.6">
 
@@ -228,8 +229,9 @@ a:hover{color:#08498C}
 <li><a href="a-venir.html" class="btn btn-soft">Facebook</a></li>
 <li><a href="a-venir.html" class="btn btn-soft">LinkedIn</a></li>
 <li><a href="a-venir.html" class="btn btn-soft"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-9 5.7a2 2 0 0 1-2 0L2 7"></path></svg>Par e-mail</a></li>
-<li><button type="button" class="btn btn-soft"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"></path><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"></path></svg>Copier le lien</button></li>
+<li><button type="button" id="copy-link" class="btn btn-soft"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"></path><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"></path></svg>Copier le lien</button></li>
 </ul>
+<p id="copy-status" role="status" style="margin: 0; font-size: 16px; font-weight: 700; min-height: 1.6em"></p>
 </div>
 </div>
 </div>
@@ -319,23 +321,30 @@ a:hover{color:#08498C}
       paint(li, !open);
     });
   });
-  document.addEventListener('keydown', function (e) {
-    if (e.key !== 'Escape') return;
-    var openBtn = document.querySelector('button.nav-btn[aria-expanded="true"]');
-    closeAll(null);
-    if (openBtn) openBtn.focus();
-  });
-  document.addEventListener('click', function (e) {
-    if (!e.target.closest('.nav-item')) closeAll(null);
-  });
   var t = document.querySelector('.menu-toggle'), nav = document.getElementById('menu-principal');
-  if (t && nav) t.addEventListener('click', function () {
-    var open = nav.classList.toggle('is-open');
+  function setMobile(open) {
+    nav.classList.toggle('is-open', open);
     t.setAttribute('aria-expanded', open ? 'true' : 'false');
     t.querySelector('.mt-label').textContent = open ? 'Fermer le menu' : 'Menu';
     t.querySelector('.mt-open').hidden = open;
     t.querySelector('.mt-close').hidden = !open;
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    var openBtn = document.querySelector('button.nav-btn[aria-expanded="true"]');
+    if (openBtn) { closeAll(null); openBtn.focus(); return; }
+    // Mobile menu: Escape closes it and gives the focus back to the « Menu » button.
+    if (t && nav && nav.classList.contains('is-open') && getComputedStyle(t).display !== 'none') { setMobile(false); t.focus(); }
   });
+  var copy = document.getElementById('copy-link'), status = document.getElementById('copy-status');
+  if (copy && status) copy.addEventListener('click', function () {
+    var done = function () { status.textContent = 'Lien copié'; setTimeout(function () { status.textContent = ''; }, 4000); };
+    if (navigator.clipboard) navigator.clipboard.writeText(location.href).then(done, done); else done();
+  });
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.nav-item')) closeAll(null);
+  });
+  if (t && nav) t.addEventListener('click', function () { setMobile(!nav.classList.contains('is-open')); });
 })();
 </script>
 </body>

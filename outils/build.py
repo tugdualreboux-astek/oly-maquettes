@@ -10,7 +10,7 @@ import re, sys, html as H, pathlib
 import markdown
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
-from pages import RUBRIQUES, PAGES, PARTNERS, FAQ, LANDINGS, LINKS
+from pages import RUBRIQUES, PAGES, PARTNERS, FAQ, LANDINGS, LINKS, BOLD_HEADINGS, LINK_TEXT_FIXES
 
 REPO = pathlib.Path(__file__).parent.parent
 SRC = REPO / 'outils/canvas'
@@ -69,30 +69,38 @@ SCRIPT = """
       paint(li, !open);
     });
   });
-  document.addEventListener('keydown', function (e) {
-    if (e.key !== 'Escape') return;
-    var openBtn = document.querySelector('button.nav-btn[aria-expanded="true"]');
-    closeAll(null);
-    if (openBtn) openBtn.focus();
-  });
-  document.addEventListener('click', function (e) {
-    if (!e.target.closest('.nav-item')) closeAll(null);
-  });
   var t = document.querySelector('.menu-toggle'), nav = document.getElementById('menu-principal');
-  if (t && nav) t.addEventListener('click', function () {
-    var open = nav.classList.toggle('is-open');
+  function setMobile(open) {
+    nav.classList.toggle('is-open', open);
     t.setAttribute('aria-expanded', open ? 'true' : 'false');
     t.querySelector('.mt-label').textContent = open ? 'Fermer le menu' : 'Menu';
     t.querySelector('.mt-open').hidden = open;
     t.querySelector('.mt-close').hidden = !open;
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    var openBtn = document.querySelector('button.nav-btn[aria-expanded="true"]');
+    if (openBtn) { closeAll(null); openBtn.focus(); return; }
+    // Mobile menu: Escape closes it and gives the focus back to the « Menu » button.
+    if (t && nav && nav.classList.contains('is-open') && getComputedStyle(t).display !== 'none') { setMobile(false); t.focus(); }
   });
+  var copy = document.getElementById('copy-link'), status = document.getElementById('copy-status');
+  if (copy && status) copy.addEventListener('click', function () {
+    var done = function () { status.textContent = 'Lien copié'; setTimeout(function () { status.textContent = ''; }, 4000); };
+    if (navigator.clipboard) navigator.clipboard.writeText(location.href).then(done, done); else done();
+  });
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.nav-item')) closeAll(null);
+  });
+  if (t && nav) t.addEventListener('click', function () { setMobile(!nav.classList.contains('is-open')); });
 })();
 </script>
 """
 
 PROTO = ('<nav aria-label="Prototype" class="proto-bar"><span>Maquette de travail, non contractuelle</span>'
-         '<a href="index.html">Sommaire des maquettes</a></nav>'
-         "<style>.proto-bar{display:flex;flex-wrap:wrap;gap:4px 20px;justify-content:center;align-items:center;padding:8px 20px;"
+         '<a href="index.html">Sommaire des maquettes</a></nav>')
+# Styles of the prototype bar: in <head> (RGAA 8.2, <style> is not allowed in <body>).
+PROTO_CSS = ("<style>.proto-bar{display:flex;flex-wrap:wrap;gap:4px 20px;justify-content:center;align-items:center;padding:8px 20px;"
          "background:#1E2B3A;color:#FFFFFF;font-family:'Atkinson Hyperlegible',system-ui,sans-serif;font-size:16px;line-height:1.4}"
          '.proto-bar a{color:#FFFFFF;font-weight:700;text-decoration:underline;text-underline-offset:3px;min-height:32px;display:inline-flex;align-items:center}'
          '.proto-bar a:hover{color:#CFE5FA}.proto-bar a:focus-visible{outline:3px solid #FFFFFF;outline-offset:2px}</style>')
@@ -125,6 +133,10 @@ EXTRA_CSS = """<style>
 .prose img{max-width:100%}
 .prose a,.prose p,.prose li,.prose td{overflow-wrap:anywhere}
 .table-wrap{overflow-x:auto;margin:0 0 24px;border-radius:8px}
+.prose caption{text-align:left;font-weight:700;padding:0 0 8px}
+.citation{font-size:22px;font-weight:700}
+.citation q{quotes:"« " " »";font-style:italic}
+.citation-source{font-weight:400;font-size:18px}
 .table-wrap table{margin:0;min-width:560px}
 .fld input,.fld textarea,.fld select{width:100%;min-width:0}
 .two-col{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:56px;align-items:start}
@@ -151,11 +163,18 @@ def nav_html(current):
     return ''.join(out)
 
 
-def relink(page):
+def relink(page, current_file=None):
     def fix(m):
         tag, inner = m.group(1), m.group(2)
         if 'href="#"' not in tag:
             return m.group(0)
+        out = _fix(tag, inner)
+        # Sub-menu link of the page being displayed: aria-current="page".
+        if current_file and f'href="{current_file}"' in out and ('nav-sublink' in tag or 'nav-all' in tag):
+            out = out.replace('<a ', '<a aria-current="page" ', 1)
+        return out
+
+    def _fix(tag, inner):
         text = H.unescape(re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', inner))).strip()
         for suffix in (' Lire la page', ' Voir la page'):
             if text.endswith(suffix):
@@ -171,7 +190,7 @@ def relink(page):
         else:
             dest = next((LINKS[k] for k in sorted(LINKS, key=len, reverse=True) if len(k) > 6 and text.endswith(k)), 'a-venir.html')
         if text == 'Français':
-            return m.group(0)
+            return '<a' + tag + '>' + inner + '</a>'
         return '<a' + tag.replace('href="#"', f'href="{dest}"') + '>' + inner + '</a>'
     return re.sub(r'<a(\s[^>]*)>(.*?)</a>', fix, page, flags=re.S)
 
@@ -180,7 +199,7 @@ def page_shell(title, body, helmet, extra_head=''):
     return (f'<!doctype html>\n<html lang="fr">\n<head>\n<meta charset="utf-8">\n'
             f'<meta name="viewport" content="width=device-width, initial-scale=1">\n'
             f'<meta name="robots" content="noindex, nofollow">\n'
-            f'<title>{H.escape(title)} — Maquette OLY</title>\n<link rel="icon" href="img/favicon.png">\n{helmet}\n{extra_head}\n</head>\n<body>\n{PROTO}\n{body}\n{SCRIPT}</body>\n</html>\n')
+            f'<title>{H.escape(title)} — Maquette OLY</title>\n<link rel="icon" href="img/favicon.png">\n{helmet}\n{extra_head}\n{PROTO_CSS}\n</head>\n<body>\n{PROTO}\n{body}\n{SCRIPT}</body>\n</html>\n')
 
 
 def export_canvas(stem):
@@ -227,14 +246,64 @@ class Corpus:
         return '\n'.join(out).strip()
 
 
-def md_to_html(text, top):
+BOLD_LINE = re.compile(r'^\*\*([^*].*?)\*\*\s*[:.]?\s*$')
+ROMAN = re.compile(r'^[IVX]+\s*-')
+ARABIC = re.compile(r'^\d+\s*-')
+
+
+def bold_to_headings(text, base):
+    """Turn standalone bold lines that introduce a block into headings (RGAA 9.1).
+
+    base = level of the heading that owns this part. Roman-numbered lines (« I- … ») sit one level below
+    the current real heading, arabic-numbered lines (« 1- … ») one level below the last roman one,
+    other bold lines one level below the current heading."""
+    lines = text.split('\n')
+    current = base          # level of the last real heading
+    roman = None            # level of the last roman-numbered heading under it
+    out = []
+    for i, l in enumerate(lines):
+        m = re.match(r'^(#{1,6}) ', l)
+        if m:
+            current, roman = len(m.group(1)), None
+            out.append(l)
+            continue
+        b = BOLD_LINE.match(l.strip())
+        nxt = next((x.strip() for x in lines[i + 1:] if x.strip()), '')
+        if b and len(b.group(1)) <= 140 and not re.match(r'^[–-]', b.group(1)) and nxt and not nxt.startswith('#'):
+            label = re.sub(r'\s*[:.]\s*$', '', b.group(1).strip())
+            if ROMAN.match(label):
+                lvl = current + 1
+                roman = lvl
+            elif ARABIC.match(label):
+                lvl = (roman or current) + 1
+            else:
+                lvl = (roman or current) + 1
+            out.append('#' * min(6, lvl) + ' ' + label)
+            continue
+        out.append(l)
+    return '\n'.join(out)
+
+
+def md_to_html(text, top, bold_headings=False):
     """Convert corpus markdown; the shallowest heading of the part becomes h<top>."""
     levels = [len(m) for m in re.findall(r'^(#{3,6}) ', text, re.M)]
     if levels:
         shift = top - min(levels)
         text = re.sub(r'^(#{3,6}) ', lambda m: '#' * max(1, min(6, len(m.group(1)) + shift)) + ' ', text, flags=re.M)
+    if bold_headings:
+        text = bold_to_headings(text, top - 1)
     out = markdown.markdown(text, extensions=['tables', 'sane_lists', 'nl2br', 'toc'])
-    return re.sub(r'<table>(.*?)</table>', r'<div class="table-wrap" role="region" aria-label="Tableau, faire défiler horizontalement" tabindex="0"><table>\1</table></div>', out, flags=re.S)
+    # Data tables: column headers with scope (RGAA 5.7), caption when the table is known, scrollable container.
+    out = re.sub(r'<th(?=[\s>])(?![^>]*scope)', '<th scope="col"', out)
+
+    def wrap(m):
+        t = m.group(1)
+        cap = '<caption>Cookies utilisés sur le site</caption>' if 'Nom du cookie' in t else ''
+        return f'<div class="table-wrap" role="region" aria-label="Tableau, faire défiler horizontalement" tabindex="0"><table>{cap}{t}</table></div>'
+    out = re.sub(r'<table>(.*?)</table>', wrap, out, flags=re.S)
+    # Quotations written as bold text between « » become <q> (RGAA 9.4).
+    out = re.sub(r'<p><strong>«\s*(?:<em>)?(.*?)(?:</em>)?\s*»</strong></p>', r'<p class="citation"><q>\1</q></p>', out)
+    return out
 
 
 def link_corpus(htmltext, url_to_file):
@@ -342,7 +411,7 @@ def main(corpus_path):
     helmets, bodies = {}, {}
     for stem, name, title in CANVAS_PAGES:
         helmets[name], bodies[name] = export_canvas(stem)
-        (REPO / name).write_text(relink(page_shell(title, bodies[name], helmets[name])), encoding='utf-8')
+        (REPO / name).write_text(relink(page_shell(title, bodies[name], helmets[name]), name), encoding='utf-8')
 
     # Shell = Page A (content template): header + footer around a new <main>.
     shell_helmet = helmets['page-a.html']
@@ -377,7 +446,7 @@ def main(corpus_path):
 
     def write(file, title, current, main_html):
         out = page_shell(title, shell(current, main_html), shell_helmet, EXTRA_CSS)
-        (REPO / file).write_text(relink(out), encoding='utf-8')
+        (REPO / file).write_text(relink(out, file), encoding='utf-8')
         generated.append(file)
 
     # Content pages
@@ -394,13 +463,20 @@ def main(corpus_path):
                     '<p style="margin-bottom: 0">À rédiger par Thierry et Maryse (action A5 du 12/10).</p></div></div></div>')
         else:
             chunks = []
+            bh = p['file'] in BOLD_HEADINGS
             for heading, a, b in p['parts']:
                 md = corpus.md(a, b)
                 if heading:
-                    chunks.append(f'<h2 id="{slug(heading)}">{H.escape(heading)}</h2>' + md_to_html(md, 3))
+                    chunks.append(f'<h2 id="{slug(heading)}">{H.escape(heading)}</h2>' + md_to_html(md, 3, bh))
                 else:
-                    chunks.append(md_to_html(md, 2))
+                    chunks.append(md_to_html(md, 2, bh))
             content = dedupe_ids(link_corpus('\n'.join(chunks), url_to_file) + p.get('extra', ''))
+            for f_, old, new, href in LINK_TEXT_FIXES:
+                if f_ == p['file']:
+                    def fixlink(m, new=new, href=href):
+                        tag = m.group(1) if href is None else re.sub(r'href="[^"]*"', f'href="{href}"', m.group(1))
+                        return f'<a{tag}>{H.escape(new)}</a>'
+                    content = re.sub(r'<a(\s[^>]*)>' + re.escape(old) + '</a>', fixlink, content, count=1)
             body = (f'<div class="wrap prose" style="padding-top: 48px; padding-bottom: 72px"><div class="read">{toc(content)}{content}</div></div>')
         write(p['file'], p['title'], current, band + body + siblings(rub, p['file'], titles) + HELP)
 
@@ -434,7 +510,8 @@ def main(corpus_path):
             + '</li>' for n, u, d in items)
         lead = ''
         if people:
-            lead = ('<div style="max-width: 820px"><h2 id="parrain" style="margin-top: 0">Notre parrain, Olivier Gourmet</h2>' + md_to_html(corpus.md(694, 698), 3)
+            bio = md_to_html(corpus.md(694, 698), 3).replace('</q></p>', '</q><span class="citation-source"> — Olivier Gourmet</span></p>')
+            lead = ('<div style="max-width: 820px"><h2 id="parrain" style="margin-top: 0">Notre parrain, Olivier Gourmet</h2>' + bio
                     + '</div><h2 id="artistes-sportifs">Artistes et sportifs</h2>')
         body = (f'<div class="wrap prose" style="padding-top: 48px; padding-bottom: 72px">{lead}'
                 f'<ul class="pt-grid">{cards}</ul></div>')
@@ -479,13 +556,13 @@ def main(corpus_path):
                + '<address style="font-style: normal; background: #FFFFFF; border-radius: 20px; padding: 28px; font-size: 21px; line-height: 1.6"><strong>Ouvrir Les Yeux</strong><br>Maison des Associations<br>45 rue François Gauthier<br>62300 Lens</address>'
                + '<p style="margin: 0">Téléphone : <a href="tel:+33321054956">03 21 05 49 56</a><br>Répondeur 24 h/24 : <a href="tel:+33366980329">03 66 98 03 29</a></p></div>'
                + '<form style="background: #FFFFFF; border-radius: 20px; padding: 32px" aria-labelledby="t-form"><h2 id="t-form" style="margin: 0 0 20px; font-size: 30px; color: #006FD6">Écrivez-nous</h2>'
-               + '<p style="margin: 0 0 20px; font-size: 16px">Tous les champs sont obligatoires, sauf le téléphone.</p>'
-               + '<div class="fld"><label for="c-nom">Nom</label><input id="c-nom" type="text" autocomplete="name" required></div>'
-               + '<div class="fld"><label for="c-mail">Adresse e-mail</label><input id="c-mail" type="email" autocomplete="email" required></div>'
+               + '<p style="margin: 0 0 20px; font-size: 16px">Les champs obligatoires portent la mention « obligatoire ».</p>'
+               + '<div class="fld"><label for="c-nom">Nom (obligatoire)</label><input id="c-nom" type="text" autocomplete="name" required></div>'
+               + '<div class="fld"><label for="c-mail">Adresse e-mail (obligatoire)</label><input id="c-mail" type="email" autocomplete="email" required></div>'
                + '<div class="fld"><label for="c-tel">Téléphone (facultatif)</label><input id="c-tel" type="tel" autocomplete="tel"></div>'
-               + '<div class="fld"><label for="c-sujet">Sujet</label><select id="c-sujet" required><option value="">Choisissez un sujet</option><option>Je suis concerné·e par une NOH</option><option>Je suis un proche</option><option>Adhésion, don, bénévolat</option><option>Presse, partenariat</option><option>Autre</option></select></div>'
-               + '<div class="fld"><label for="c-msg">Message</label><textarea id="c-msg" rows="6" required></textarea></div>'
-               + '<div style="display: flex; gap: 12px; align-items: flex-start; margin-bottom: 22px"><input id="c-rgpd" type="checkbox" required style="width: 24px; height: 24px; margin-top: 3px; flex-shrink: 0"><label for="c-rgpd">J\'accepte que mes données soient utilisées pour répondre à ma demande. <a href="mentions-legales.html">Politique de confidentialité</a></label></div>'
+               + '<div class="fld"><label for="c-sujet">Sujet (obligatoire)</label><select id="c-sujet" required><option value="">Choisissez un sujet</option><option>Je suis concerné·e par une NOH</option><option>Je suis un proche</option><option>Adhésion, don, bénévolat</option><option>Presse, partenariat</option><option>Autre</option></select></div>'
+               + '<div class="fld"><label for="c-msg">Message (obligatoire)</label><textarea id="c-msg" rows="6" required></textarea></div>'
+               + '<div style="display: flex; gap: 12px; align-items: flex-start; margin-bottom: 22px"><input id="c-rgpd" type="checkbox" required style="width: 24px; height: 24px; margin-top: 3px; flex-shrink: 0"><label for="c-rgpd">J\'accepte que mes données soient utilisées pour répondre à ma demande (obligatoire). <a href="mentions-legales.html">Politique de confidentialité</a></label></div>'
                + '<button type="button" class="btn btn-primary">Envoyer le message</button></form></div></div>')
     write('contact.html', 'Nous contacter', '', contact)
 

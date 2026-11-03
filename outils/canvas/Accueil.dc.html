@@ -43,6 +43,8 @@ a:hover{color:#08498C}
 .eng-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
 .news-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:48px;align-items:start}
 .act-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.agenda-card{padding:32px}
+@media (max-width:600px){.agenda-card{padding:20px}}
 .nl-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center}
 .nl-row{display:flex;gap:12px;align-items:stretch}
 .agir-btns{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
@@ -52,7 +54,7 @@ a:hover{color:#08498C}
 .foot-list a:hover{color:#0A5CB0}
 @media (max-width:1100px){
 .eng-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-.news-layout{grid-template-columns:1fr}
+.news-layout{grid-template-columns:minmax(0,1fr)}
 .agir-btns{grid-template-columns:repeat(2,minmax(0,1fr))}
 .foot-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 .menu-toggle{display:inline-flex;order:2}
@@ -85,8 +87,8 @@ a:hover{color:#08498C}
 .nav-all{padding-left:40px}
 .hero-grid{grid-template-columns:1fr;gap:40px}
 .hero-title{font-size:38px}
-.eng-grid{grid-template-columns:1fr}
-.act-grid{grid-template-columns:1fr}
+.eng-grid{grid-template-columns:minmax(0,1fr)}
+.act-grid{grid-template-columns:minmax(0,1fr)}
 .nl-grid{grid-template-columns:1fr;gap:24px}
 .nl-row{flex-direction:column}
 .agir-btns{grid-template-columns:1fr}
@@ -216,7 +218,7 @@ a:hover{color:#08498C}
 
 <section class="sec" style="padding-top: 96px; padding-bottom: 96px">
 <div class="wrap news-layout">
-<section aria-labelledby="t-agenda" style="background: #E2F3EE; border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 24px">
+<section aria-labelledby="t-agenda" class="agenda-card" style="background: #E2F3EE; border-radius: 24px; display: flex; flex-direction: column; gap: 24px">
 <h2 id="t-agenda" style="margin: 0; font-size: 36px; line-height: 1.2; color: #006FD6">Agenda</h2>
 <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px">
 <li><a href="#" style="display: flex; gap: 18px; background: #FFFFFF; border-radius: 16px; padding: 18px; text-decoration: none; color: #1E2B3A">

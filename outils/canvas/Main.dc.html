@@ -30,7 +30,8 @@ a:hover{color:#08498C}
 .ds-states{display:grid;grid-template-columns:160px repeat(5,minmax(0,1fr));gap:16px;align-items:center}
 .ds-type{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;align-items:baseline;padding:20px 0;border-bottom:1px solid #D9DEE5}
 .ds-type:last-child{border-bottom:0}
-@media (max-width:900px){.ds-grid-5,.ds-grid-4{grid-template-columns:repeat(2,minmax(0,1fr))}.ds-grid-3,.ds-grid-2{grid-template-columns:1fr}.ds-states{grid-template-columns:1fr 1fr}.ds-type{grid-template-columns:1fr;gap:4px}}
+@media (max-width:900px){.ds-grid-5,.ds-grid-4{grid-template-columns:repeat(2,minmax(0,1fr))}.ds-grid-3,.ds-grid-2{grid-template-columns:minmax(0,1fr)}.ds-states{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.ds-type{grid-template-columns:minmax(0,1fr);gap:4px}}
+@media (max-width:600px){.ds-grid-5,.ds-grid-4,.ds-states{grid-template-columns:minmax(0,1fr)}.btn{white-space:normal;padding:12px 20px}.ds-logo{height:auto !important;max-width:100%}[style*="padding: 40px"]{padding:20px !important}main{padding:0 20px !important}div[aria-hidden="true"][style*="margin-left: auto"]{margin-left:0 !important;flex-wrap:wrap;gap:12px !important}}
 </style>
 </helmet>
 <div style="background: #FAF8F7; color: #1E2B3A; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; font-size: 18px; line-height: 1.6; padding: 80px 0 120px">
@@ -56,10 +57,10 @@ a:hover{color:#08498C}
 </div>
 <div class="ds-grid-2">
 <div style="background: #FFFFFF; border: 2px solid #D9DEE5; border-radius: 16px; padding: 40px; display: flex; align-items: center; justify-content: center">
-<img src="/_blob/f7b6a400732c3640baab415d48077e2f" alt="Logo Ouvrir Les Yeux sur fond blanc" style="display: block; height: 96px; width: auto">
+<img src="/_blob/f7b6a400732c3640baab415d48077e2f" alt="Logo Ouvrir Les Yeux sur fond blanc" class="ds-logo" style="display: block; height: 96px; width: auto">
 </div>
 <div style="background: #E3F0FC; border-radius: 16px; padding: 40px; display: flex; align-items: center; justify-content: center">
-<img src="/_blob/f7b6a400732c3640baab415d48077e2f" alt="Logo Ouvrir Les Yeux sur fond bleu pastel" style="display: block; height: 96px; width: auto">
+<img src="/_blob/f7b6a400732c3640baab415d48077e2f" alt="Logo Ouvrir Les Yeux sur fond bleu pastel" class="ds-logo" style="display: block; height: 96px; width: auto">
 </div>
 </div>
 <div class="ds-grid-2" style="font-size: 16px; margin-top: -16px">

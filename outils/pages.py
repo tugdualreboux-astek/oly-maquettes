@@ -182,6 +182,17 @@ LANDINGS = {
                                   list(FAQ)),
 }
 
+# Pages whose standalone bold lines are real headings (RGAA 9.1). Elsewhere bold lines stay emphasis.
+BOLD_HEADINGS = {'que-sont-ces-maladies.html', 'mentions-legales.html', 'adapter-son-environnement.html',
+                 'la-recherche.html', 'adherer.html', 'les-traitements.html'}
+
+# Link texts that do not make sense on their own (RGAA 6.1 good practice): (page, old text, new text, new href or None)
+LINK_TEXT_FIXES = [
+    ('les-aidants.html', 'Cliquez ici', "Les démarches auprès de la MDPH", 'les-demarches.html'),
+    ('les-demarches.html', 'cliquez ici', "Qu'est-ce qu'une MDPH ? (site mdph.fr)", None),
+    ('les-demarches.html', 'En savoir plus', "En savoir plus sur le Club Emploi du GIAA (site apidv.org)", None),
+]
+
 # Menu labels and other link texts -> destination file.
 LINKS = {
     'Accueil': 'accueil.html', 'Faire un don': 'don.html',

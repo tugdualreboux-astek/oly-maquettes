@@ -125,15 +125,20 @@ a:hover{color:#08498C}
 .prose img{max-width:100%}
 .prose a,.prose p,.prose li,.prose td{overflow-wrap:anywhere}
 .table-wrap{overflow-x:auto;margin:0 0 24px;border-radius:8px}
+.prose caption{text-align:left;font-weight:700;padding:0 0 8px}
+.citation{font-size:22px;font-weight:700}
+.citation q{quotes:"« " " »";font-style:italic}
+.citation-source{font-weight:400;font-size:18px}
 .table-wrap table{margin:0;min-width:560px}
 .fld input,.fld textarea,.fld select{width:100%;min-width:0}
 .two-col{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:56px;align-items:start}
 @media (max-width:1100px){.lp-grid,.pt-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.two-col{grid-template-columns:minmax(0,1fr);gap:32px}}
 @media (max-width:760px){.lp-grid,.pt-grid{grid-template-columns:1fr}}
 </style>
+<style>.proto-bar{display:flex;flex-wrap:wrap;gap:4px 20px;justify-content:center;align-items:center;padding:8px 20px;background:#1E2B3A;color:#FFFFFF;font-family:'Atkinson Hyperlegible',system-ui,sans-serif;font-size:16px;line-height:1.4}.proto-bar a{color:#FFFFFF;font-weight:700;text-decoration:underline;text-underline-offset:3px;min-height:32px;display:inline-flex;align-items:center}.proto-bar a:hover{color:#CFE5FA}.proto-bar a:focus-visible{outline:3px solid #FFFFFF;outline-offset:2px}</style>
 </head>
 <body>
-<nav aria-label="Prototype" class="proto-bar"><span>Maquette de travail, non contractuelle</span><a href="index.html">Sommaire des maquettes</a></nav><style>.proto-bar{display:flex;flex-wrap:wrap;gap:4px 20px;justify-content:center;align-items:center;padding:8px 20px;background:#1E2B3A;color:#FFFFFF;font-family:'Atkinson Hyperlegible',system-ui,sans-serif;font-size:16px;line-height:1.4}.proto-bar a{color:#FFFFFF;font-weight:700;text-decoration:underline;text-underline-offset:3px;min-height:32px;display:inline-flex;align-items:center}.proto-bar a:hover{color:#CFE5FA}.proto-bar a:focus-visible{outline:3px solid #FFFFFF;outline-offset:2px}</style>
+<nav aria-label="Prototype" class="proto-bar"><span>Maquette de travail, non contractuelle</span><a href="index.html">Sommaire des maquettes</a></nav>
 
 <div style="background: #FAF8F7; color: #1E2B3A; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; font-size: 18px; line-height: 1.6">
 
@@ -167,7 +172,7 @@ a:hover{color:#08498C}
 </nav>
 </header>
 
-<main id="contenu"><div style="background: #E3F0FC; padding: 28px 0 56px; position: relative; overflow: hidden"><div class="hero-deco" aria-hidden="true" style="position: absolute; right: 8%; top: 50px; display: flex; gap: 18px; align-items: center"><span style="width: 130px; height: 130px; border-radius: 50%; border: 14px solid #A9D1F5"></span><span style="width: 36px; height: 36px; border-radius: 50%; background: #FFFFFF"></span></div><div class="wrap" style="display: flex; flex-direction: column; gap: 28px; position: relative"><nav aria-label="Fil d'Ariane"><ol class="crumbs"><li><a href="accueil.html">Accueil</a></li><li aria-hidden="true">›</li><li><strong aria-current="page">Nous contacter</strong></li></ol></nav><div style="display: flex; flex-direction: column; gap: 14px; max-width: 44em"><h1 class="page-title" style="margin: 0; font-size: 48px; line-height: 1.12">Nous contacter</h1><p style="margin: 0; font-size: 21px">Une question, un besoin d&#x27;aide ? Écrivez-nous ou appelez-nous.</p></div></div></div><div class="wrap" style="padding-top: 48px; padding-bottom: 80px"><div class="two-col"><div style="display: flex; flex-direction: column; gap: 16px"><h2 style="margin: 0; font-size: 30px; color: #006FD6">Coordonnées</h2><address style="font-style: normal; background: #FFFFFF; border-radius: 20px; padding: 28px; font-size: 21px; line-height: 1.6"><strong>Ouvrir Les Yeux</strong><br>Maison des Associations<br>45 rue François Gauthier<br>62300 Lens</address><p style="margin: 0">Téléphone : <a href="tel:+33321054956">03 21 05 49 56</a><br>Répondeur 24 h/24 : <a href="tel:+33366980329">03 66 98 03 29</a></p></div><form style="background: #FFFFFF; border-radius: 20px; padding: 32px" aria-labelledby="t-form"><h2 id="t-form" style="margin: 0 0 20px; font-size: 30px; color: #006FD6">Écrivez-nous</h2><p style="margin: 0 0 20px; font-size: 16px">Tous les champs sont obligatoires, sauf le téléphone.</p><div class="fld"><label for="c-nom">Nom</label><input id="c-nom" type="text" autocomplete="name" required></div><div class="fld"><label for="c-mail">Adresse e-mail</label><input id="c-mail" type="email" autocomplete="email" required></div><div class="fld"><label for="c-tel">Téléphone (facultatif)</label><input id="c-tel" type="tel" autocomplete="tel"></div><div class="fld"><label for="c-sujet">Sujet</label><select id="c-sujet" required><option value="">Choisissez un sujet</option><option>Je suis concerné·e par une NOH</option><option>Je suis un proche</option><option>Adhésion, don, bénévolat</option><option>Presse, partenariat</option><option>Autre</option></select></div><div class="fld"><label for="c-msg">Message</label><textarea id="c-msg" rows="6" required></textarea></div><div style="display: flex; gap: 12px; align-items: flex-start; margin-bottom: 22px"><input id="c-rgpd" type="checkbox" required style="width: 24px; height: 24px; margin-top: 3px; flex-shrink: 0"><label for="c-rgpd">J'accepte que mes données soient utilisées pour répondre à ma demande. <a href="mentions-legales.html">Politique de confidentialité</a></label></div><button type="button" class="btn btn-primary">Envoyer le message</button></form></div></div></main>
+<main id="contenu"><div style="background: #E3F0FC; padding: 28px 0 56px; position: relative; overflow: hidden"><div class="hero-deco" aria-hidden="true" style="position: absolute; right: 8%; top: 50px; display: flex; gap: 18px; align-items: center"><span style="width: 130px; height: 130px; border-radius: 50%; border: 14px solid #A9D1F5"></span><span style="width: 36px; height: 36px; border-radius: 50%; background: #FFFFFF"></span></div><div class="wrap" style="display: flex; flex-direction: column; gap: 28px; position: relative"><nav aria-label="Fil d'Ariane"><ol class="crumbs"><li><a href="accueil.html">Accueil</a></li><li aria-hidden="true">›</li><li><strong aria-current="page">Nous contacter</strong></li></ol></nav><div style="display: flex; flex-direction: column; gap: 14px; max-width: 44em"><h1 class="page-title" style="margin: 0; font-size: 48px; line-height: 1.12">Nous contacter</h1><p style="margin: 0; font-size: 21px">Une question, un besoin d&#x27;aide ? Écrivez-nous ou appelez-nous.</p></div></div></div><div class="wrap" style="padding-top: 48px; padding-bottom: 80px"><div class="two-col"><div style="display: flex; flex-direction: column; gap: 16px"><h2 style="margin: 0; font-size: 30px; color: #006FD6">Coordonnées</h2><address style="font-style: normal; background: #FFFFFF; border-radius: 20px; padding: 28px; font-size: 21px; line-height: 1.6"><strong>Ouvrir Les Yeux</strong><br>Maison des Associations<br>45 rue François Gauthier<br>62300 Lens</address><p style="margin: 0">Téléphone : <a href="tel:+33321054956">03 21 05 49 56</a><br>Répondeur 24 h/24 : <a href="tel:+33366980329">03 66 98 03 29</a></p></div><form style="background: #FFFFFF; border-radius: 20px; padding: 32px" aria-labelledby="t-form"><h2 id="t-form" style="margin: 0 0 20px; font-size: 30px; color: #006FD6">Écrivez-nous</h2><p style="margin: 0 0 20px; font-size: 16px">Les champs obligatoires portent la mention « obligatoire ».</p><div class="fld"><label for="c-nom">Nom (obligatoire)</label><input id="c-nom" type="text" autocomplete="name" required></div><div class="fld"><label for="c-mail">Adresse e-mail (obligatoire)</label><input id="c-mail" type="email" autocomplete="email" required></div><div class="fld"><label for="c-tel">Téléphone (facultatif)</label><input id="c-tel" type="tel" autocomplete="tel"></div><div class="fld"><label for="c-sujet">Sujet (obligatoire)</label><select id="c-sujet" required><option value="">Choisissez un sujet</option><option>Je suis concerné·e par une NOH</option><option>Je suis un proche</option><option>Adhésion, don, bénévolat</option><option>Presse, partenariat</option><option>Autre</option></select></div><div class="fld"><label for="c-msg">Message (obligatoire)</label><textarea id="c-msg" rows="6" required></textarea></div><div style="display: flex; gap: 12px; align-items: flex-start; margin-bottom: 22px"><input id="c-rgpd" type="checkbox" required style="width: 24px; height: 24px; margin-top: 3px; flex-shrink: 0"><label for="c-rgpd">J'accepte que mes données soient utilisées pour répondre à ma demande (obligatoire). <a href="mentions-legales.html">Politique de confidentialité</a></label></div><button type="button" class="btn btn-primary">Envoyer le message</button></form></div></div></main>
 
 <footer style="background: #E3F0FC; padding: 72px 0 32px">
 <div class="wrap" style="display: flex; flex-direction: column; gap: 48px">
@@ -226,23 +231,30 @@ a:hover{color:#08498C}
       paint(li, !open);
     });
   });
-  document.addEventListener('keydown', function (e) {
-    if (e.key !== 'Escape') return;
-    var openBtn = document.querySelector('button.nav-btn[aria-expanded="true"]');
-    closeAll(null);
-    if (openBtn) openBtn.focus();
-  });
-  document.addEventListener('click', function (e) {
-    if (!e.target.closest('.nav-item')) closeAll(null);
-  });
   var t = document.querySelector('.menu-toggle'), nav = document.getElementById('menu-principal');
-  if (t && nav) t.addEventListener('click', function () {
-    var open = nav.classList.toggle('is-open');
+  function setMobile(open) {
+    nav.classList.toggle('is-open', open);
     t.setAttribute('aria-expanded', open ? 'true' : 'false');
     t.querySelector('.mt-label').textContent = open ? 'Fermer le menu' : 'Menu';
     t.querySelector('.mt-open').hidden = open;
     t.querySelector('.mt-close').hidden = !open;
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    var openBtn = document.querySelector('button.nav-btn[aria-expanded="true"]');
+    if (openBtn) { closeAll(null); openBtn.focus(); return; }
+    // Mobile menu: Escape closes it and gives the focus back to the « Menu » button.
+    if (t && nav && nav.classList.contains('is-open') && getComputedStyle(t).display !== 'none') { setMobile(false); t.focus(); }
   });
+  var copy = document.getElementById('copy-link'), status = document.getElementById('copy-status');
+  if (copy && status) copy.addEventListener('click', function () {
+    var done = function () { status.textContent = 'Lien copié'; setTimeout(function () { status.textContent = ''; }, 4000); };
+    if (navigator.clipboard) navigator.clipboard.writeText(location.href).then(done, done); else done();
+  });
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.nav-item')) closeAll(null);
+  });
+  if (t && nav) t.addEventListener('click', function () { setMobile(!nav.classList.contains('is-open')); });
 })();
 </script>
 </body>
