@@ -1,0 +1,29 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "Accueil-mobile.dc.html": {"h": 7960, "is_interactive": true, "title": "1 · Accueil — mobile", "w": 390, "x": 3040, "y": 0},
+    "Accueil.dc.html": {"expand": "fill", "h": 3650, "is_interactive": true, "title": "1 · Accueil — desktop", "w": 1440, "x": 1520, "y": 0},
+    "Actualites-mobile.dc.html": {"h": 7520, "is_interactive": true, "title": "3 · Nos Actualités — mobile", "w": 390, "x": 7020, "y": 0},
+    "Actualites.dc.html": {"expand": "fill", "h": 3300, "is_interactive": true, "title": "3 · Nos Actualités — desktop", "w": 1440, "x": 5500, "y": 0},
+    "Article-mobile.dc.html": {"h": 7670, "is_interactive": true, "title": "4 · Article / Actualité — mobile", "w": 390, "x": 9010, "y": 0},
+    "Article.dc.html": {"expand": "fill", "h": 5000, "is_interactive": true, "title": "4 · Article / Actualité — desktop", "w": 1440, "x": 7490, "y": 0},
+    "Don-mobile.dc.html": {"h": 5840, "is_interactive": true, "title": "6 · Faire un don — mobile", "w": 390, "x": 14510, "y": 0},
+    "Don.dc.html": {"expand": "fill", "h": 3150, "is_interactive": true, "title": "6 · Faire un don — desktop", "w": 1440, "x": 12990, "y": 0},
+    "Main.dc.html": {"expand": "fill", "h": 6600, "is_interactive": true, "title": "0 · Système de design", "w": 1440, "x": 0, "y": 0},
+    "Menu-mobile.dc.html": {"h": 1050, "is_interactive": true, "title": "2 · Menu déployé — mobile", "w": 390, "x": 5030, "y": 0},
+    "Menu.dc.html": {"expand": "fill", "h": 1650, "is_interactive": true, "title": "2 · Menu déployé — desktop", "w": 1440, "x": 3510, "y": 0},
+    "Page-A.dc.html": {"expand": "fill", "h": 5080, "is_interactive": true, "title": "5 · Page de contenu — variante A (une colonne)", "w": 1440, "x": 9480, "y": 0},
+    "Page-B.dc.html": {"expand": "fill", "h": 4320, "is_interactive": true, "title": "5 · Page de contenu — variante B (colonne latérale)", "w": 1440, "x": 11000, "y": 0},
+    "Page-mobile.dc.html": {"h": 8000, "is_interactive": true, "title": "5 · Page de contenu — mobile", "w": 390, "x": 12520, "y": 0}
+  },
+  "createdOnFiles": {"at": "2026-10-07T08:05:00Z", "v": 1},
+  "designSystems": [],
+  "launch": {"view": "canvas"},
+  "notes": {
+    "titre": {"kind": "title1", "maxW": 8000, "text": "OLY — Maquettes de référence · prompts 0 à 6 · octobre 2026", "w": 240, "x": 0, "y": -320}
+  },
+  "order": ["Main.dc.html", "Accueil.dc.html", "Accueil-mobile.dc.html", "Menu.dc.html", "Menu-mobile.dc.html", "Actualites.dc.html", "Actualites-mobile.dc.html", "Article.dc.html", "Article-mobile.dc.html", "Page-A.dc.html", "Page-B.dc.html", "Page-mobile.dc.html", "Don.dc.html", "Don-mobile.dc.html"],
+  "pages": [],
+  "title": "Maquettes OLY"
+}

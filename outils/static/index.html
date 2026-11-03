@@ -27,6 +27,12 @@ h2{margin:0 0 20px;font-size:30px;line-height:1.25;color:#006FD6}
 .go{margin-top:auto;color:#0A5CB0;font-weight:700;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:2px}
 .tag{align-self:flex-start;padding:2px 12px;border-radius:999px;font-size:16px;font-weight:700}
 footer{background:#E3F0FC;padding:32px 0;font-size:16px}
+.all-pages h2{font-size:24px;color:#1E2B3A;margin:28px 0 14px}
+.all-pages .grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:12px}
+.all-pages .card{padding:16px 20px}
+.all-pages .card strong{font-size:19px}
+@media (max-width:1100px){.all-pages .grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.all-pages .grid{grid-template-columns:1fr}}
 @media (max-width:760px){.wrap{padding:0 20px}h1{font-size:34px}.grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -44,7 +50,7 @@ footer{background:#E3F0FC;padding:32px 0;font-size:16px}
 </header>
 <main>
 <div class="wrap">
-<h2>Les pages</h2>
+<h2>Les gabarits de référence</h2>
 <ul class="grid">
 <li><a class="card" href="accueil.html"><span class="tag" style="background:#E3F0FC">Page d'accueil</span><strong>Accueil</strong><span>Engagements, agenda, actualités, newsletter et appel à agir.</span><span class="go">Voir la page</span></a></li>
 <li><a class="card" href="actualites.html"><span class="tag" style="background:#FFEBDD">Liste</span><strong>Nos Actualités</strong><span>Filtres internes et externes, cartes, pagination.</span><span class="go">Voir la page</span></a></li>
@@ -53,6 +59,9 @@ footer{background:#E3F0FC;padding:32px 0;font-size:16px}
 <li><a class="card" href="page-a.html"><span class="tag" style="background:#E2F3EE">Gabarit · variante A</span><strong>Page de contenu, une colonne</strong><span>Exemple : le diagnostic et parcours de soin.</span><span class="go">Voir la page</span></a></li>
 <li><a class="card" href="page-b.html"><span class="tag" style="background:#E2F3EE">Gabarit · variante B</span><strong>Page de contenu, avec colonne latérale</strong><span>Même contenu, avec sommaire, contact et don sur le côté. À comparer avec la variante A.</span><span class="go">Voir la page</span></a></li>
 </ul>
+<h2 style="margin-top:8px">Toutes les pages du site (<!--COUNT-->)</h2>
+<p style="margin:0 0 28px;max-width:52em">Chaque entrée de l'arborescence a sa page. Les textes sont repris du site actuel et restent à relire par l'association ; les pages sans texte existant sont signalées « Contenu à fournir ».</p>
+<div class="all-pages"><!--PAGES--></div>
 <h2>Pour l'équipe projet</h2>
 <ul class="grid">
 <li><a class="card" href="systeme-de-design.html"><span class="tag" style="background:#CFE5FA">Référence</span><strong>Système de design</strong><span>Logo, couleurs et contrastes, typographie, boutons, composants, règles d'accessibilité.</span><span class="go">Voir la page</span></a></li>
@@ -60,7 +69,7 @@ footer{background:#E3F0FC;padding:32px 0;font-size:16px}
 </div>
 </main>
 <footer>
-<div class="wrap">Refonte du site Ouvrir Les Yeux · Maquettes de référence · Dernière mise à jour : <span id="maj">octobre 2026</span></div>
+<div class="wrap">Refonte du site Ouvrir Les Yeux · Maquettes de référence · Dernière mise à jour : <span id="maj">novembre 2026</span></div>
 </footer>
 </body>
 </html>

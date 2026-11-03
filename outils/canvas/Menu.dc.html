@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>OLY — Menu déployé</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FAF8F7}
+*{box-sizing:border-box}
+a{color:#0A5CB0;text-underline-offset:3px;text-decoration-thickness:2px}
+a:hover{color:#08498C}
+:focus-visible{outline:3px solid #0A5CB0;outline-offset:2px}
+.wrap{max-width:1344px;margin:0 auto;padding:0 48px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:12px 28px;border-radius:999px;font-family:inherit;font-weight:700;font-size:18px;line-height:1.2;text-decoration:none;border:2px solid transparent;cursor:pointer;text-align:center}
+.btn-primary{background:#D93A39;color:#FFFFFF}
+.btn-primary:hover{background:#B92F2E;color:#FFFFFF}
+.topbar-in{display:flex;align-items:center;justify-content:space-between;gap:16px 32px;min-height:96px;flex-wrap:wrap}
+.utils{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.menu-toggle{display:none;align-items:center;gap:10px;min-height:48px;padding:8px 20px;border-radius:999px;border:2px solid #1E2B3A;background:#FFFFFF;color:#1E2B3A;font-family:inherit;font-size:18px;font-weight:700;cursor:pointer}
+.navlist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}
+.nav-item{position:relative;border-right:2px solid #767676}
+.nav-item:last-child{border-right:0}
+.nav-btn{width:100%;min-height:104px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:14px 12px;border:0;background:transparent;font-family:inherit;font-weight:700;font-size:18px;line-height:1.35;color:#1E2B3A;text-align:center;text-decoration:none;cursor:pointer}
+.nav-btn:hover{background:#CFE5FA;color:#1E2B3A}
+.nl{display:block}
+.nav-ind{display:none;flex-shrink:0;width:28px;text-align:center;font-size:30px;font-weight:700;line-height:1}
+.nav-panel{position:absolute;top:100%;left:0;width:max-content;min-width:300px;max-width:380px;background:#FFFFFF;border-radius:0 0 16px 16px;box-shadow:0 14px 32px rgba(30,43,58,0.18);list-style:none;margin:0;padding:8px 0 12px;z-index:20}
+.nav-item:nth-last-child(-n+2) .nav-panel{left:auto;right:0}
+.nav-sublink{display:block;padding:12px 24px;color:#1E2B3A;text-decoration:none;font-size:18px;line-height:1.4;border-bottom:1px solid #E6E9ED}
+.nav-sublink:hover{background:#E3F0FC;color:#1E2B3A;text-decoration:underline}
+.nav-all{display:block;padding:12px 24px 14px;font-weight:700;font-size:18px}
+.doc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+@media (max-width:1100px){
+.menu-toggle{display:inline-flex;order:2}
+.utils{gap:20px}
+.topbar-in{column-gap:24px}
+.skip{position:absolute;left:-10000px}
+.skip:focus{position:static}
+.mainnav{display:none}
+.mainnav.is-open{display:block}
+.navlist{grid-template-columns:1fr}
+.nav-item{border-right:0;border-bottom:2px solid #FFFFFF}
+.nav-btn{flex-direction:row;justify-content:space-between;min-height:60px;padding:14px 24px;text-align:left;font-size:18px}
+.nl{display:inline}
+.nav-ind{display:inline-block}
+.nav-panel{position:static;width:auto;max-width:none;min-width:0;box-shadow:none;border-radius:0;padding:0 0 8px}
+.nav-sublink{padding-left:44px}
+.nav-all{padding-left:44px}
+.hide-t{display:none !important}
+}
+@media (max-width:760px){
+.wrap{padding:0 20px}
+.topbar-in{min-height:0;padding-top:14px;gap:12px}
+.logo-slot{height:48px !important}
+.utils{order:3;width:100%;gap:8px 20px;padding-bottom:14px}
+.utils .btn{width:100%}
+.nav-btn{padding:14px 20px}
+.nav-sublink{padding-left:40px}
+.nav-all{padding-left:40px}
+}
+</style>
+</helmet>
+<div style="background: #FAF8F7; color: #1E2B3A; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; font-size: 18px; line-height: 1.6">
+
+<header style="background: #FFFFFF">
+<div class="wrap topbar-in">
+<a href="#" class="logo-slot" style="display: inline-flex; align-items: center; height: 64px; text-decoration: none"><img src="/_blob/f7b6a400732c3640baab415d48077e2f" alt="Ouvrir Les Yeux, pour voir demain : accueil" style="display: block; height: 100%; width: auto"></a>
+<nav aria-label="Accès rapides" class="utils">
+<a href="#contenu" class="skip">Aller au contenu</a>
+<a href="#" style="display: inline-flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>Rechercher</a>
+<span style="display: inline-flex; align-items: center; gap: 12px">
+<a href="#" lang="fr" aria-current="true" style="color: #1E2B3A; font-weight: 700">Français</a>
+<span aria-hidden="true">·</span>
+<a href="#" lang="en" hreflang="en">English</a>
+<span aria-hidden="true">·</span>
+<a href="#" lang="es" hreflang="es">Español</a>
+</span>
+<a href="#" class="btn btn-primary">Faire un don</a>
+</nav>
+<button type="button" class="menu-toggle" aria-expanded="{{menuExpanded}}" aria-controls="menu-principal" onClick="{{toggleMobile}}">
+<sc-if value="{{mobileClosed}}" hint-placeholder-val="{{false}}">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+</sc-if>
+<sc-if value="{{mobileOpen}}" hint-placeholder-val="{{true}}">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+</sc-if>
+{{menuLabel}}
+</button>
+</div>
+<nav id="menu-principal" aria-label="Menu principal" class="mainnav {{navOpenClass}}" style="border-top: 1px solid #D9DEE5; border-bottom: 1px solid #D9DEE5">
+<ul class="navlist">
+<sc-for list="{{items}}" as="item" hint-placeholder-count="7">
+<li class="nav-item" style="background: {{item.bgNow}}; box-shadow: {{item.shadow}}">
+<sc-if value="{{item.hasSub}}" hint-placeholder-val="{{true}}">
+<button type="button" class="nav-btn" aria-expanded="{{item.expanded}}" aria-controls="{{item.panelId}}" onClick="{{item.toggle}}">
+<span><span class="nl">{{item.l1}}</span> <span class="nl">{{item.l2}}</span></span>
+<span class="nav-ind" aria-hidden="true">{{item.sign}}</span>
+</button>
+<sc-if value="{{item.isOpen}}" hint-placeholder-val="{{false}}">
+<ul id="{{item.panelId}}" class="nav-panel">
+<li><a href="#" class="nav-all">{{item.allLabel}}</a></li>
+<sc-for list="{{item.subs}}" as="sub" hint-placeholder-count="4">
+<li><a href="#" class="nav-sublink">{{sub.label}}</a></li>
+</sc-for>
+</ul>
+</sc-if>
+</sc-if>
+<sc-if value="{{item.noSub}}" hint-placeholder-val="{{false}}">
+<a href="#" class="nav-btn"><span><span class="nl">{{item.l1}}</span> <span class="nl">{{item.l2}}</span></span></a>
+</sc-if>
+</li>
+</sc-for>
+</ul>
+</nav>
+</header>
+
+<main id="contenu" class="hide-t" style="padding: 400px 0 96px">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<h1 style="margin: 0; font-size: 36px; line-height: 1.2; color: #006FD6">Les autres sous-menus</h1>
+<p style="margin: 0; max-width: 46em">Même panneau pour chaque entrée : une colonne de liens larges, un lien vers la page de la rubrique en tête. Cliquez sur une entrée du menu ci-dessus pour l'ouvrir.</p>
+</div>
+<div class="doc-grid">
+<section style="background: #FFFFFF; border-radius: 16px; overflow: hidden; box-shadow: 0 6px 20px rgba(30,43,58,0.10)">
+<h2 style="margin: 0; padding: 16px 24px; font-size: 20px; background: #E2F3EE">La vie en situation de handicap visuel</h2>
+<ul style="list-style: none; margin: 0; padding: 8px 0 12px">
+<li><a href="#" class="nav-all">Toute la rubrique</a></li>
+<li><a href="#" class="nav-sublink">Les démarches</a></li>
+<li><a href="#" class="nav-sublink">Adapter son environnement</a></li>
+<li><a href="#" class="nav-sublink">Les aidants</a></li>
+<li><a href="#" class="nav-sublink">Les loisirs</a></li>
+</ul>
+</section>
+<section style="background: #FFFFFF; border-radius: 16px; overflow: hidden; box-shadow: 0 6px 20px rgba(30,43,58,0.10)">
+<h2 style="margin: 0; padding: 16px 24px; font-size: 20px; background: #FFE6E5">Nos Actions</h2>
+<ul style="list-style: none; margin: 0; padding: 8px 0 12px">
+<li><a href="#" class="nav-all">Toutes nos actions</a></li>
+<li><a href="#" class="nav-sublink">La pair-aidance</a></li>
+<li><a href="#" class="nav-sublink">Recherche</a></li>
+<li><a href="#" class="nav-sublink">Plaidoyer</a></li>
+<li><a href="#" class="nav-sublink">La ruche</a></li>
+</ul>
+</section>
+<section style="background: #FFFFFF; border-radius: 16px; overflow: hidden; box-shadow: 0 6px 20px rgba(30,43,58,0.10)">
+<h2 style="margin: 0; padding: 16px 24px; font-size: 20px; background: #FFEBDD">Nos Actualités</h2>
+<ul style="list-style: none; margin: 0; padding: 8px 0 12px">
+<li><a href="#" class="nav-all">Toutes les actualités</a></li>
+<li><a href="#" class="nav-sublink">Internes</a></li>
+<li><a href="#" class="nav-sublink">Externes</a></li>
+</ul>
+</section>
+<section style="background: #FFFFFF; border-radius: 16px; overflow: hidden; box-shadow: 0 6px 20px rgba(30,43,58,0.10)">
+<h2 style="margin: 0; padding: 16px 24px; font-size: 20px; background: #E3F0FC">Nos Partenaires</h2>
+<ul style="list-style: none; margin: 0; padding: 8px 0 12px">
+<li><a href="#" class="nav-all">Tous nos partenaires</a></li>
+<li><a href="#" class="nav-sublink">Institutionnels</a></li>
+<li><a href="#" class="nav-sublink">Entreprises</a></li>
+<li><a href="#" class="nav-sublink">Associations</a></li>
+<li><a href="#" class="nav-sublink">Fondations</a></li>
+<li><a href="#" class="nav-sublink">Personnalités</a></li>
+</ul>
+</section>
+<section style="background: #FFFFFF; border-radius: 16px; overflow: hidden; box-shadow: 0 6px 20px rgba(30,43,58,0.10)">
+<h2 style="margin: 0; padding: 16px 24px; font-size: 20px; background: #E2F3EE">Les Questions Fréquentes</h2>
+<ul style="list-style: none; margin: 0; padding: 8px 0 12px">
+<li><a href="#" class="nav-all">Toutes les questions</a></li>
+<li><a href="#" class="nav-sublink">Je suis malade</a></li>
+<li><a href="#" class="nav-sublink">Je suis aidant</a></li>
+<li><a href="#" class="nav-sublink">Je suis médecin</a></li>
+</ul>
+</section>
+<section style="background: #FFFFFF; border-radius: 16px; overflow: hidden; box-shadow: 0 6px 20px rgba(30,43,58,0.10)">
+<h2 style="margin: 0; padding: 16px 24px; font-size: 20px; background: #FFE6E5">Notre boutique</h2>
+<p style="margin: 0; padding: 20px 24px">Pas de sous-menu : l'entrée mène directement à une page qui renvoie vers la boutique en ligne HelloAsso.</p>
+</section>
+</div>
+</div>
+</main>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1500}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { open: 'noh', mobileOpen: true };
+  }
+  renderVals() {
+    var CURRENT = '';
+    var self = this;
+    var open = this.state.open;
+    var data = [
+      { id: 'noh', l1: 'Les', l2: 'NOH', bg: '#E3F0FC', all: 'Tout savoir sur les NOH', subs: ['Que sont ces maladies', 'Prévention', 'Le diagnostic et parcours de soin', 'Les traitements', 'La recherche'] },
+      { id: 'vie', l1: 'La vie en situation', l2: 'de handicap visuel', bg: '#E2F3EE', all: 'Toute la rubrique', subs: ['Les démarches', 'Adapter son environnement', 'Les aidants', 'Les loisirs'] },
+      { id: 'actions', l1: 'Nos', l2: 'Actions', bg: '#FFE6E5', all: 'Toutes nos actions', subs: ['La pair-aidance', 'Recherche', 'Plaidoyer', 'La ruche'] },
+      { id: 'actus', l1: 'Nos', l2: 'Actualités', bg: '#FFEBDD', all: 'Toutes les actualités', subs: ['Internes', 'Externes'] },
+      { id: 'partenaires', l1: 'Nos', l2: 'Partenaires', bg: '#E3F0FC', all: 'Tous nos partenaires', subs: ['Institutionnels', 'Entreprises', 'Associations', 'Fondations', 'Personnalités'] },
+      { id: 'faq', l1: 'Les Questions', l2: 'Fréquentes', bg: '#E2F3EE', all: 'Toutes les questions', subs: ['Je suis malade', 'Je suis aidant', 'Je suis médecin'] },
+      { id: 'boutique', l1: 'Notre', l2: 'boutique', bg: '#FFE6E5', all: '', subs: [] }
+    ];
+    var items = data.map(function (d) {
+      var isOpen = open === d.id;
+      var hl = isOpen || CURRENT === d.id;
+      return {
+        id: d.id, l1: d.l1, l2: d.l2, allLabel: d.all,
+        hasSub: d.subs.length > 0,
+        noSub: d.subs.length === 0,
+        isOpen: isOpen,
+        expanded: isOpen ? 'true' : 'false',
+        panelId: 'panel-' + d.id,
+        bgNow: hl ? '#CFE5FA' : d.bg,
+        shadow: hl ? 'inset 0 -5px 0 #1E2B3A' : 'none',
+        rot: isOpen ? 'rotate(180deg)' : 'none',
+        sign: isOpen ? '−' : '+',
+        subs: d.subs.map(function (s) { return { label: s }; }),
+        toggle: function () { self.setState({ open: isOpen ? null : d.id }); }
+      };
+    });
+    var mobileOpen = this.state.mobileOpen;
+    return {
+      items: items,
+      mobileOpen: mobileOpen,
+      mobileClosed: !mobileOpen,
+      menuExpanded: mobileOpen ? 'true' : 'false',
+      menuLabel: mobileOpen ? 'Fermer le menu' : 'Menu',
+      navOpenClass: mobileOpen ? 'is-open' : '',
+      toggleMobile: function () { self.setState({ mobileOpen: !mobileOpen }); }
+    };
+  }
+}
+</script>
+</body>
+</html>
