@@ -79,8 +79,8 @@ PAGES = [
          parts=[("Dans le domaine de l'accessibilité", 511, 525), ('Sensibiliser à la cécité', 527, 560),
                 ('Le regard des Français sur la cécité', 1934, 2012), ('Le projet ERASMUS+ Open Up', 562, 631)]),
     dict(file='la-ruche.html', rub='actions', title='La ruche', placeholder=True,
-         card="Page à rédiger par l'association.",
-         intro="Cette rubrique est nouvelle : le site actuel ne contient pas encore de texte à son sujet."),
+         card="Bientôt en ligne : découvrez La ruche.",
+         intro="Une nouvelle action de l'association, présentée très prochainement."),
     # --- Boutique ---
     dict(file='notre-boutique.html', rub='boutique', title='Notre boutique', landing_self=True,
          card="Livre, cartes de vœux, chanson : des achats solidaires.",

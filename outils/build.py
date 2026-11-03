@@ -346,8 +346,7 @@ def crumbs(items):
 
 def title_band(title, intro, rub, trail, note=True):
     bg = RUBRIQUES[rub][2]
-    proto = ('<p class="note-proto"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>'
-             '<span>Texte repris du site actuel, à relire et mettre à jour par l\'association.</span></p>') if note else ''
+    proto = ''
     return (f'<div style="background: {bg}; padding: 28px 0 56px; position: relative; overflow: hidden">'
             '<div class="hero-deco" aria-hidden="true" style="position: absolute; right: 8%; top: 50px; display: flex; gap: 18px; align-items: center">'
             '<span style="width: 130px; height: 130px; border-radius: 50%; border: 14px solid #A9D1F5"></span>'
@@ -458,9 +457,9 @@ def main(corpus_path):
         band = title_band(p['title'], p['intro'], rub, trail_for(rub, p['title'], p.get('landing_self')), note=not p.get('placeholder'))
         if p.get('placeholder'):
             body = ('<div class="wrap prose" style="padding-top: 48px; padding-bottom: 72px"><div class="read">'
-                    '<div style="background: #FFFFFF; border: 2px dashed #767676; border-radius: 16px; padding: 28px 32px">'
-                    '<h2 style="margin-top: 0">Contenu à fournir</h2><p>Présentez ici « La ruche » : ce que c\'est, à qui elle s\'adresse, comment y participer, et une personne à contacter.</p>'
-                    '<p style="margin-bottom: 0">À rédiger par Thierry et Maryse (action A5 du 12/10).</p></div></div></div>')
+                    '<div style="background: #FFFFFF; border-radius: 16px; padding: 28px 32px">'
+                    '<h2 style="margin-top: 0">Bientôt en ligne</h2><p>La présentation de La ruche arrive très prochainement sur cette page.</p>'
+                    '<p style="margin-bottom: 0">En attendant, pour toute question, <a href="contact.html">contactez-nous</a>.</p></div></div></div>')
         else:
             chunks = []
             bh = p['file'] in BOLD_HEADINGS
@@ -524,7 +523,6 @@ def main(corpus_path):
         dets = qlist + ''.join(f'<section class="faq-item" aria-labelledby="q{i}"><h2 id="q{i}">{H.escape(q)}</h2><p>{H.escape(a)}</p><p><a href="{h}">{H.escape(lt)}</a></p></section>' for i, (q, a, h, lt) in enumerate(qas, 1))
         band = title_band(title, "Les questions les plus fréquentes, et où trouver la réponse détaillée sur le site.", 'faq', trail_for('faq', title), note=False)
         body = ('<div class="wrap" style="padding-top: 48px; padding-bottom: 72px"><div class="read faq" style="max-width: 860px">'
-                '<p class="note-proto" style="margin: 0 0 24px">Proposition de réponses rédigée à partir du site actuel, à valider par l\'association et son comité médico-scientifique.</p>'
                 f'{dets}</div></div>')
         write(f, title, 'faq', band + body + siblings('faq', f, titles) + HELP)
 
@@ -545,7 +543,7 @@ def main(corpus_path):
                         ('Assemblée générale', 'Le rendez-vous annuel des adhérents.', '#E2F3EE')])
     agenda = (title_band('Agenda', "Les rendez-vous de l'association : certains sont réservés aux adhérents, d'autres ouverts à tous.", 'actions', [('Accueil', 'accueil.html'), ('Agenda', None)], note=False)
               + '<div class="wrap" style="padding-top: 48px; padding-bottom: 72px"><div class="read prose">'
-              + '<h2 id="a-venir">Prochains événements</h2><p class="note-proto">Dates et lieux à compléter. L\'agenda Google actuel sera remplacé par une liste accessible.</p>'
+              + '<h2 id="a-venir">Prochains événements</h2>'
               + f'<ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 16px">{agenda_events}</ul>'
               + '<h2 id="archives">Les animations des années passées</h2>' + link_corpus(md_to_html(corpus.md(2523, 2546), 3), url_to_file)
               + '</div></div>')
@@ -571,7 +569,6 @@ def main(corpus_path):
     # Accessibility statement (skeleton)
     acc = (title_band("Déclaration d'accessibilité", "Ouvrir Les Yeux s'engage à rendre son site accessible à toutes et à tous.", 'infos', [('Accueil', 'accueil.html'), ("Déclaration d'accessibilité", None)], note=False)
            + '<div class="wrap prose" style="padding-top: 48px; padding-bottom: 72px"><div class="read">'
-           + '<p class="note-proto">Modèle de déclaration à compléter après l\'audit RGAA (phase D).</p>'
            + '<h2 id="etat">État de conformité</h2><p>Le site est [totalement / partiellement / non] conforme au référentiel général d\'amélioration de l\'accessibilité (RGAA 4.1), en raison des non-conformités listées ci-dessous.</p>'
            + '<h2 id="resultats">Résultats des tests</h2><p>L\'audit réalisé par [prestataire] le [date] révèle que [XX] % des critères du RGAA sont respectés.</p>'
            + '<h2 id="non-accessibles">Contenus non accessibles</h2><p>[Liste des non-conformités, dérogations et contenus non soumis à l\'obligation.]</p>'
