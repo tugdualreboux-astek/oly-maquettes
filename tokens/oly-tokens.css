@@ -1,0 +1,80 @@
+/* Ouvrir Les Yeux — design tokens (généré par outils/guide.py) */
+:root {
+  --color-ink: #1E2B3A; /* Encre */
+  --color-oly-blue: #006FD6; /* Bleu OLY */
+  --color-link: #0A5CB0; /* Bleu lien */
+  --color-link-hover: #08498C; /* Bleu lien survol */
+  --color-coral: #D93A39; /* Corail bouton */
+  --color-coral-hover: #B92F2E; /* Corail survol */
+  --color-teal: #015C73; /* Canard */
+  --color-muted: #5B6470; /* Gris texte */
+  --color-bg-blue: #E3F0FC; /* Bleu pastel */
+  --color-bg-blue-mid: #CFE5FA; /* Bleu moyen */
+  --color-bg-sky: #A9D1F5; /* Bleu ciel */
+  --color-bg-coral: #FFE6E5; /* Rose */
+  --color-bg-mint: #E2F3EE; /* Menthe */
+  --color-bg-peach: #FFEBDD; /* Pêche */
+  --color-page: #FAF8F7; /* Fond de page */
+  --color-card: #FFFFFF; /* Blanc */
+  --color-border-field: #767676; /* Bordure de champ */
+  --color-border-table: #B8C0CA; /* Bordure de tableau */
+  --color-border-soft: #D9DEE5; /* Filet */
+  --color-border-list: #E6E9ED; /* Filet de liste */
+  --color-deco-pink: #FFB3B2; /* Rose décor */
+  --color-deco-coral: #FF4948; /* Corail charte */
+  --font-family: 'Atkinson Hyperlegible', system-ui, sans-serif;
+  --fs-display: 52px; --lh-display: 1.12;
+  --fs-h1: 48px; --lh-h1: 1.12;
+  --fs-h2-section: 36px; --lh-h2-section: 1.2;
+  --fs-h2-content: 32px; --lh-h2-content: 1.25;
+  --fs-h3: 26px; --lh-h3: 1.3;
+  --fs-h4: 22px; --lh-h4: 1.3;
+  --fs-lead: 21px; --lh-lead: 1.5;
+  --fs-article: 20px; --lh-article: 1.7;
+  --fs-body: 18px; --lh-body: 1.6;
+  --fs-meta: 16px; --lh-meta: 1.5;
+  --radius-sm: 8px;
+  --radius-field: 12px;
+  --radius-md: 14px;
+  --radius-card: 16px;
+  --radius-lg: 18px;
+  --radius-xl: 20px;
+  --radius-xxl: 24px;
+  --radius-pill: 999px;
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-28: 28px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-56: 56px;
+  --space-64: 64px;
+  --space-72: 72px;
+  --space-80: 80px;
+  --space-96: 96px;
+  --shadow-rest: 0 2px 12px rgba(30,43,58,.08);
+  --shadow-hover: 0 6px 20px rgba(30,43,58,.16);
+  --shadow-raised: 0 6px 24px rgba(30,43,58,.10);
+  --shadow-panel: 0 14px 32px rgba(30,43,58,.18);
+  --focus-ring: 3px solid #0A5CB0;
+  --container: 1344px;
+  --gutter: 48px;
+  --reading-width: 820px;
+}
+@media (max-width: 760px) {
+  :root {
+    --gutter: 20px;
+    --fs-display: 38px;
+    --fs-h1: 34px;
+    --fs-h2-section: 28px;
+    --fs-h2-content: 28px;
+    --fs-h3: 23px;
+    --fs-lead: 19px;
+    --fs-article: 19px;
+  }
+}
+:focus-visible { outline: var(--focus-ring); outline-offset: 2px; }

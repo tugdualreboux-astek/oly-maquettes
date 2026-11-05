@@ -443,8 +443,8 @@ def main(corpus_path):
 
     generated = []
 
-    def write(file, title, current, main_html):
-        out = page_shell(title, shell(current, main_html), shell_helmet, EXTRA_CSS)
+    def write(file, title, current, main_html, extra_css=''):
+        out = page_shell(title, shell(current, main_html), shell_helmet, EXTRA_CSS + extra_css)
         (REPO / file).write_text(relink(out, file), encoding='utf-8')
         generated.append(file)
 
@@ -595,6 +595,15 @@ def main(corpus_path):
     sm = ''.join(f'<section><h2 id="{slug(g)}">{H.escape(g)}</h2><ul>' + ''.join(f'<li><a href="{f}">{H.escape(alltitles[f])}</a></li>' for f in fs) + '</ul></section>' for g, fs in groups)
     write('plan-du-site.html', 'Plan du site', '', title_band('Plan du site', 'Toutes les pages du site.', 'infos', [('Accueil', 'accueil.html'), ('Plan du site', None)], note=False)
           + f'<div class="wrap prose" style="padding-top: 48px; padding-bottom: 72px"><div class="lp-grid" style="list-style: none">{sm}</div></div>')
+
+    # Developer guide + design tokens (outils/guide.py)
+    import guide
+    write('guide-integration.html', "Guide d'intégration", '', guide.guide_main(title_band(
+        "Guide d'intégration", "Couleurs, typographie, espacements, composants réutilisables et comportements, pour intégrer le site.",
+        'infos', [('Accueil', 'accueil.html'), ("Guide d'intégration", None)], note=False)), guide.GUIDE_CSS)
+    (REPO / 'tokens').mkdir(exist_ok=True)
+    (REPO / 'tokens' / 'oly-tokens.json').write_text(guide.tokens_json(), encoding='utf-8')
+    (REPO / 'tokens' / 'oly-tokens.css').write_text(guide.tokens_css(), encoding='utf-8')
 
     # Prototype index (summary for reviewers)
     idx = (STATIC / 'index.html').read_text(encoding='utf-8')
