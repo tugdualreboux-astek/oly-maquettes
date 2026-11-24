@@ -1,6 +1,8 @@
 // Figma Plugin API renderer (runs inside use_figma). Prepended with:
-//   const SETUP = true|false; const PAGE = 'Ordinateur — 1440'; const SRC = 'https://…/figma/B1-1440.json';
-// SRC holds [{sec: 'Les NOH', items: [{n: 'Frame name', d: {w, h, bg, svgs, tree}}]}] produced by extract.js.
+//   const SETUP = true|false; const PAGE = 'Ordinateur — 1440';
+//   const COMPS = [{n: 'En-tête — Ordinateur', d: {w, h, svgs, tree}}]   (shared header/footer, built once as components)
+//   const SECS = [{sec: 'Section name', items: [{n: 'Frame name', d: {w, h, bg, svgs, tree}}]}]
+// In trees, {k: 'Component name', x, y} places an instance of a shared component (built by pack.py).
 const PALETTE = [
   ['Texte/Encre', '#1E2B3A'], ['Texte/Bleu OLY (titres ≥ 24 px)', '#006FD6'], ['Texte/Bleu lien', '#0A5CB0'], ['Texte/Bleu lien survol', '#08498C'],
   ['Texte/Gris désactivé', '#5B6470'], ['Action/Corail bouton', '#D93A39'], ['Action/Corail survol', '#B92F2E'], ['Accent/Canard', '#015C73'],
@@ -8,10 +10,18 @@ const PALETTE = [
   ['Fond/Pêche', '#FFEBDD'], ['Fond/Page', '#FAF8F7'], ['Fond/Blanc', '#FFFFFF'], ['Bordure/Champ', '#767676'], ['Bordure/Tableau', '#B8C0CA'],
   ['Bordure/Filet', '#D9DEE5'], ['Bordure/Filet de liste', '#E6E9ED'], ['Décor/Rose', '#FFB3B2'], ['Décor/Corail charte', '#FF4948']];
 const t0 = Date.now();
+// Decode the compact positional format produced by pack.py.
+function dec(a) {
+  switch (a[0]) {
+    case 0: return { f: a[1], x: a[2], y: a[3], w: a[4], h: a[5], bg: a[6] || null, r: a[7] || undefined, b: a[8] || null, sh: a[9] || null, clip: a[10], c: a[11].map(dec) };
+    case 1: return { t: a[1], x: a[2], y: a[3], w: a[4], h: a[5], s: ST[a[6]], runs: a[7] };
+    case 2: return { v: a[1], x: a[2], y: a[3], w: a[4], h: a[5] };
+    case 3: return { i: 1, x: a[1], y: a[2], w: a[3], h: a[4] };
+    default: return { k: a[1], x: a[2], y: a[3] };
+  }
+}
+for (const blk of [...COMPS.map(c => c.d), ...SECS.flatMap(s => s.items.map(i => i.d))]) blk.tree = blk.tree.map(dec);
 const errors = [];
-let SECS;
-try { SECS = await (await fetch(SRC)).json(); }
-catch (e) { return { fetchError: String(e).slice(0, 300) }; }
 const hex2rgb = (h) => ({ r: parseInt(h.slice(1, 3), 16) / 255, g: parseInt(h.slice(3, 5), 16) / 255, b: parseInt(h.slice(5, 7), 16) / 255 });
 
 // --- pages, variables, logo
@@ -23,10 +33,13 @@ if (!logoComp && SETUP) {
   logoComp.fills = [{ type: 'SOLID', color: { r: 0.89, g: 0.94, b: 0.99 } }];
   logoComp.description = "Coller ici l'image img/logo-oly.png (remplissage image, mode Ajuster) puis supprimer le texte : le logo se met à jour sur tous les écrans.";
   const lt = figma.createText(); logoComp.appendChild(lt);
-  lt.fontName = { family: 'Inter', style: 'Bold' }; lt.characters = 'LOGO OLY'; lt.fontSize = 64;
+  lt.fontName = { family: 'Inter', style: 'Bold' }; lt.characters = 'LOGO OLY'; lt.fontSize = 20;
   lt.x = (560 - lt.width) / 2; lt.y = (198 - lt.height) / 2; lt.constraints = { horizontal: 'SCALE', vertical: 'SCALE' };
 }
 if (SETUP) figma.root.children[0].name = 'Ressources';
+// Placeholder text of the logo must stay readable once the instances are scaled down.
+const lt0 = logoComp && logoComp.findOne(n => n.type === 'TEXT');
+if (lt0 && lt0.fontSize > 20) { await figma.loadFontAsync(lt0.fontName); lt0.fontSize = 20; lt0.x = (560 - lt0.width) / 2; lt0.y = (198 - lt0.height) / 2; }
 let coll = (await figma.variables.getLocalVariableCollectionsAsync()).find(c => c.name === 'OLY — Couleurs');
 const vmap = {};
 if (!coll && SETUP) {
@@ -41,9 +54,9 @@ if (!coll && SETUP) {
 } else if (coll) {
   for (const id of coll.variableIds) { const v = await figma.variables.getVariableByIdAsync(id); if (v && v.description) vmap[v.description] = v; }
 }
+const compByName = {};
+for (const c of figma.currentPage.findAllWithCriteria({ types: ['COMPONENT'] })) compByName[c.name] = c;
 let page = figma.root.children.find(p => p.name === PAGE);
-if (!page) { page = figma.createPage(); page.name = PAGE; }
-await figma.setCurrentPageAsync(page);
 
 // --- fonts
 let fam = 'Atkinson Hyperlegible';
@@ -95,7 +108,12 @@ function build(n, parent, svgs) {
       s.x = n.x; s.y = n.y; s.name = 'Icône';
       return;
     }
-    if ('i' in n) {
+    if ('k' in n) {
+const inst = compByName[n.k].createInstance();
+parent.appendChild(inst); inst.x = n.x; inst.y = n.y;
+return;
+}
+if ('i' in n) {
       const r = logoComp ? logoComp.createInstance() : figma.createRectangle();
       parent.appendChild(r);
       r.resize(n.w, n.h); r.x = n.x; r.y = n.y; r.name = 'Logo OLY';
@@ -127,6 +145,20 @@ function build(n, parent, svgs) {
   } catch (e) { errors.push(String(e).slice(0, 120) + ' @ ' + (n.f || n.t || n.v)); }
 }
 
+// Shared components on the first page (Ressources), in a row under the logo.
+let cx = 0;
+for (const c of figma.currentPage.children) if (c.y >= 300) cx = Math.max(cx, c.x + c.width + 120);
+for (const { n, d } of COMPS) {
+  const holder = figma.createFrame(); holder.resize(d.w, d.h); holder.fills = [];
+  for (const c of d.tree) build(c, holder, d.svgs);
+  const node = holder.children[0];
+  figma.currentPage.appendChild(node); holder.remove();
+  const comp = figma.createComponentFromNode(node);
+  comp.name = n; comp.x = cx; comp.y = 300; cx += comp.width + 120;
+  compByName[n] = comp;
+}
+if (!page) { page = figma.createPage(); page.name = PAGE; }
+await figma.setCurrentPageAsync(page);
 let y = 0;
 for (const c of page.children) y = Math.max(y, c.y + c.height + 400);
 const created = [];
@@ -140,12 +172,12 @@ for (const { sec, items } of SECS) {
     root.name = n; root.resize(d.w, d.h); root.x = x; root.y = 160;
     root.fills = [paint(d.bg || '#FAF8F7')]; root.clipsContent = true;
     for (const c of d.tree) build(c, root, d.svgs);
-    const only = root.children.length === 1 && root.children[0].type === 'FRAME' && root.children[0].width === d.w ? root.children[0] : null;
-    if (only) { for (const k of [...only.children]) { root.appendChild(k); k.y += only.y; k.x += only.x; } only.remove(); }
-    created.push({ id: root.id, name: n, nodes: root.findAll(() => true).length });
+    created.push({ id: root.id, name: n });
     x += d.w + 160; maxH = Math.max(maxH, d.h);
   }
   section.resizeWithoutConstraints(x - 40, maxH + 280);
   y += maxH + 280 + 400;
 }
-return { page: page.id, font: fam, logo: !!logoComp, variables: Object.keys(vmap).length, ms: Date.now() - t0, frames: created.length, nodes: created.reduce((a, c) => a + c.nodes, 0), created: created.map(c => c.id + ' ' + c.name), errors: errors.slice(0, 12), errorCount: errors.length };
+const shot = await figma.getNodeByIdAsync(created[created.length > 1 ? 1 : 0].id);
+await shot.screenshot({ scale: 0.25 });
+return { page: page.id, font: fam, comps: Object.keys(compByName), variables: Object.keys(vmap).length, ms: Date.now() - t0, created, errors: errors.slice(0, 12), errorCount: errors.length };
