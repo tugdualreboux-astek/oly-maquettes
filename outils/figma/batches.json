@@ -1,0 +1,8 @@
+[
+ ["B1", [["Accueil et pages transverses", ["accueil", "accueil#menu", "contact", "plan-du-site", "mentions-legales", "accessibilite", "systeme-de-design"]]]],
+ ["B2", [["Les NOH", ["les-noh", "que-sont-ces-maladies", "prevention", "page-a", "les-traitements", "la-recherche", "page-b"]]]],
+ ["B3", [["La vie en situation de handicap visuel", ["la-vie-handicap-visuel", "les-demarches", "adapter-son-environnement", "les-aidants", "les-loisirs"]], ["L'association", ["qui-sommes-nous", "notre-histoire", "nos-antennes", "comite-medico-scientifique"]]]],
+ ["B4", [["Nos Actions", ["nos-actions", "la-pair-aidance", "la-ruche", "plaidoyer", "recherche-oly"]], ["Nos Actualités", ["actualites", "article", "agenda"]]]],
+ ["B5", [["Nos Partenaires", ["nos-partenaires", "partenaires-associations", "partenaires-entreprises", "partenaires-fondations", "partenaires-institutionnels", "partenaires-personnalites"]], ["Les Questions Fréquentes", ["questions-frequentes", "faq-malade", "faq-aidant", "faq-medecin"]]]],
+ ["B6", [["Notre boutique et Agir avec nous", ["notre-boutique", "agir-avec-nous", "don", "adherer", "devenir-benevole", "mecenat", "legs", "taxe-apprentissage"]]]]
+]
