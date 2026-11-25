@@ -555,15 +555,13 @@ def main(corpus_path):
                + '<div style="display: flex; flex-direction: column; gap: 16px"><h2 style="margin: 0; font-size: 30px; color: #006FD6">Coordonnées</h2>'
                + '<address style="font-style: normal; background: #FFFFFF; border-radius: 20px; padding: 28px; font-size: 21px; line-height: 1.6"><strong>Ouvrir Les Yeux</strong><br>Maison des Associations<br>45 rue François Gauthier<br>62300 Lens</address>'
                + '<p style="margin: 0">Téléphone : <a href="tel:+33321054956">03 21 05 49 56</a><br>Répondeur 24 h/24 : <a href="tel:+33366980329">03 66 98 03 29</a></p></div>'
-               + '<form style="background: #FFFFFF; border-radius: 20px; padding: 32px" aria-labelledby="t-form"><h2 id="t-form" style="margin: 0 0 20px; font-size: 30px; color: #006FD6">Écrivez-nous</h2>'
-               + '<p style="margin: 0 0 20px; font-size: 16px">Les champs obligatoires portent la mention « obligatoire ».</p>'
-               + '<div class="fld"><label for="c-nom">Nom (obligatoire)</label><input id="c-nom" type="text" autocomplete="name" required></div>'
-               + '<div class="fld"><label for="c-mail">Adresse e-mail (obligatoire)</label><input id="c-mail" type="email" autocomplete="email" required></div>'
-               + '<div class="fld"><label for="c-tel">Téléphone (facultatif)</label><input id="c-tel" type="tel" autocomplete="tel"></div>'
-               + '<div class="fld"><label for="c-sujet">Sujet (obligatoire)</label><select id="c-sujet" required><option value="">Choisissez un sujet</option><option>Je suis concerné·e par une NOH</option><option>Je suis un proche</option><option>Adhésion, don, bénévolat</option><option>Presse, partenariat</option><option>Autre</option></select></div>'
-               + '<div class="fld"><label for="c-msg">Message (obligatoire)</label><textarea id="c-msg" rows="6" required></textarea></div>'
-               + '<div style="display: flex; gap: 12px; align-items: flex-start; margin-bottom: 22px"><input id="c-rgpd" type="checkbox" required style="width: 24px; height: 24px; margin-top: 3px; flex-shrink: 0"><label for="c-rgpd">J\'accepte que mes données soient utilisées pour répondre à ma demande (obligatoire). <a href="mentions-legales.html">Politique de confidentialité</a></label></div>'
-               + '<button type="button" class="btn btn-primary">Envoyer le message</button></form></div></div>')
+               # Contact goes through the Brevo form (decision 25/11/2026): a link, no form hosted on the site.
+               + '<section style="background: #FFFFFF; border-radius: 20px; padding: 32px; display: flex; flex-direction: column; gap: 20px; align-items: flex-start" aria-labelledby="t-form">'
+               + '<h2 id="t-form" style="margin: 0; font-size: 30px; color: #006FD6">Écrivez-nous</h2>'
+               + '<p style="margin: 0">Pour une question, un besoin d\'aide, une adhésion ou un partenariat, remplissez notre formulaire de contact. Nous vous répondons par e-mail ou par téléphone.</p>'
+               + '<a class="btn btn-primary" href="a-venir.html">Écrire à l\'association</a>'
+               + '<p style="margin: 0; font-size: 16px">Le formulaire s\'ouvre sur le site sécurisé de notre partenaire Brevo. Vos données servent uniquement à répondre à votre demande. <a href="mentions-legales.html">Politique de confidentialité</a></p>'
+               + '</section></div></div>')
     write('contact.html', 'Nous contacter', '', contact)
 
     # Accessibility statement (skeleton)
